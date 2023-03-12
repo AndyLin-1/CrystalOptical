@@ -10,6 +10,8 @@ import javax.persistence.*;
 @Entity
 public class Item {
     @Id
+    @SequenceGenerator(name = "item_sequence", sequenceName = "item_sequence", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "item_sequence")
     private Long id;
 
     /**
@@ -77,11 +79,13 @@ public class Item {
 
     private double rating;
 
+    private int itemStock;
+
 
     public Item(){}
 
     public Item(String glassesName, double price, String brand, String frameSize, String frameShape, String rimType, String lensMaterial,
-                String colour, String gender, double rating){
+                String colour, String gender, double rating, int itemStock){
         this.glassesName = glassesName;
         this.price = price;
         this.brand = brand;
@@ -92,6 +96,6 @@ public class Item {
         this.colour = colour;
         this.gender = gender;
         this.rating = rating;
-
+        this.itemStock = itemStock;
     }
 }
