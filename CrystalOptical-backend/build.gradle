@@ -44,6 +44,7 @@ dependencies {
 
     // postgres
     runtimeOnly("org.postgresql:postgresql")
+    
 }
 
 tasks.named('test') {

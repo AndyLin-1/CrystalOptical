@@ -15,12 +15,12 @@ import java.util.Collection;
 @Getter
 @Setter
 @Entity
-public class User implements UserDetails {
+public class Users implements UserDetails {
 
     @Id
     @SequenceGenerator(name = "user_sequence", sequenceName = "user_sequence", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_sequence")
-    private Long id;
+    private int id;
 
     @Column(updatable = false)
     @CreationTimestamp
@@ -36,9 +36,9 @@ public class User implements UserDetails {
     private Boolean locked = false;
     private Boolean enabled = false;
 
-    public User() {}
+    public Users() {}
 
-    public User(String email, String password) {
+    public Users(String email, String password) {
         this.email = email;
         this.password = password;
     }
@@ -78,11 +78,11 @@ public class User implements UserDetails {
         return enabled;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 }
