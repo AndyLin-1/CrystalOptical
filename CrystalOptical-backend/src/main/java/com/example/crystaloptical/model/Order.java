@@ -5,9 +5,6 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.util.*;
 
-
-@Getter
-@Setter
 @Entity
 public class Order {
 
@@ -36,7 +33,6 @@ public class Order {
     public deliveryStatus getStatus () { return status; }
     public Date getCreationDate () { return createdAt; }
     public ArrayList<ItemQuantity> getOrderList () { return items; }
-    
 
     public Order (Users customer, ArrayList<ItemQuantity> items, Date createdAt, deliveryStatus status) {
         this.customer = customer;
@@ -44,9 +40,5 @@ public class Order {
         this.createdAt = createdAt;
         this.status = status;
     }
-
-
-
-
-
 }
+

@@ -4,13 +4,13 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
-import com.example.crystaloptical.model.ItemQuantity;
+
+import java.util.Date;
+import java.util.ArrayList;
 import com.example.crystaloptical.model.Users;
+import com.example.crystaloptical.model.ItemQuantity;
 
 import javax.validation.constraints.NotEmpty;
-
-import java.util.ArrayList;
-import java.util.Date;
 
 @Getter
 @Setter
