@@ -16,16 +16,35 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "order_sequence")
     private int id;
 
-    enum deliveryStatus {
+    public enum deliveryStatus {
         PROCESSING,
         READY_TO_SHIP,
         SHIPPED,
         IN_TRANSIT,
         DELIVERED
     }
+    // Shipping address will be stored in users' information
+    private Users customer;
     private deliveryStatus status;
     private ArrayList<ItemQuantity> items = new ArrayList<>();
     private Date createdAt;
+
+    public Order () {}
+
+    public int getId() {return id; }
+    public Users getCustomer () { return customer; }
+    public deliveryStatus getStatus () { return status; }
+    public Date getCreationDate () { return createdAt; }
+    public ArrayList<ItemQuantity> getOrderList () { return items; }
+    
+
+    public Order (Users customer, ArrayList<ItemQuantity> items, Date createdAt, deliveryStatus status) {
+        this.customer = customer;
+        this.items = items;
+        this.createdAt = createdAt;
+        this.status = status;
+    }
+
 
 
 
