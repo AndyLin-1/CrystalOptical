@@ -22,6 +22,7 @@ dependencies {
     //QOL
     implementation("javax.validation:validation-api:2.0.1.Final")
     implementation ("jakarta.persistence:jakarta.persistence-api:2.2.3")
+    implementation 'org.jetbrains:annotations:20.1.0'
     compileOnly("org.projectlombok:lombok")
     annotationProcessor("org.projectlombok:lombok")
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor:2.7.3")
@@ -44,6 +45,10 @@ dependencies {
 
     // postgres
     runtimeOnly("org.postgresql:postgresql")
+
+//    //Swagger UI
+//    compile (group: 'io.springfox', name: 'springfox-swagger2', version: '2.7.0')
+//    compile (group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.7.0')
     
 }
 

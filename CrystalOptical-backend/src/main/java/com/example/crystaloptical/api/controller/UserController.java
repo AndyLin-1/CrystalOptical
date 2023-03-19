@@ -39,7 +39,7 @@ public class UserController {
 
     @ResponseStatus(OK)
     @PostMapping("/login")
-    public UserLoginResponse loginUser(
+    public String loginUser(
             @Valid @RequestBody UserAuthRequest userAuthRequest) throws Exception {
         return authService.loginUser(userAuthRequest);
     }
