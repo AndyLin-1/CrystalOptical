@@ -6,11 +6,13 @@ import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Collection;
+import java.util.Collections;
 
 @Getter
 @Setter
@@ -33,6 +35,7 @@ public class Users implements UserDetails {
     private String lastName;
     private String password;
 
+    public UserRole role;
     private Boolean locked = false;
     private Boolean enabled = false;
 
@@ -43,9 +46,11 @@ public class Users implements UserDetails {
         this.password = password;
     }
 
+    //Roles Need to be added later
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        SimpleGrantedAuthority authority = new SimpleGrantedAuthority(role.name());
+        return Collections.singletonList(authority);
     }
 
     @Override
@@ -86,3 +91,4 @@ public class Users implements UserDetails {
         return id;
     }
 }
+
