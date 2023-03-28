@@ -19,7 +19,7 @@ public class Item {
      * Example: https://www.clearly.ca/eyewear
      */
 
-    private String glassesName;
+    private String name;
 
     private double price;
 
@@ -33,15 +33,6 @@ public class Item {
      */
     private String brand;
 
-
-    /**
-     * Lens Material:
-     * 1. Metal
-     * 2. Stainless Steel
-     * 3. Plastic
-     */
-    private String lensMaterial;
-
     /**
      * frameWidth:
      * 1. Small
@@ -49,52 +40,25 @@ public class Item {
      * 3. Large
      */
     private String frameSize;
-
-    /**
-     * Examples:
-     * Rectangle
-     * Square
-     * Round
-     */
-    private String frameShape;
-
-    /**
-     * Examples:
-     * 1. Full Rim
-     * 2. Rimless
-     * 3. Semi Rimless
-     */
-    private String rimType;
-
-
     private String colour;
-
-    /**
-     * Could delete but a lot of size have them.
-     * Examples:
-     * Men
-     * Women
-     */
-    private String gender;
 
     private double rating;
 
     private int itemStock;
 
+    //Path to the image
+    private String imagePath;
+
 
     public Item(){}
 
-    public Item(String glassesName, double price, String brand, String frameSize, String frameShape, String rimType, String lensMaterial,
-                String colour, String gender, double rating, int itemStock){
-        this.glassesName = glassesName;
+    public Item(String name, double price, String brand, String frameSize, String colour,
+                double rating, int itemStock){
+        this.name = name;
         this.price = price;
         this.brand = brand;
         this.frameSize = frameSize;
-        this.frameShape = frameShape;
-        this.rimType = rimType;
-        this.lensMaterial = lensMaterial;
         this.colour = colour;
-        this.gender = gender;
         this.rating = rating;
         this.itemStock = itemStock;
     }

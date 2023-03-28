@@ -2,10 +2,15 @@ package com.example.crystaloptical.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+
 import javax.persistence.*;
 import java.util.*;
 
+@Getter
+@Setter
 @Entity
+@Table(name="CUSTOMER_ORDER")
 public class Order {
 
     @Id
@@ -20,24 +25,31 @@ public class Order {
         IN_TRANSIT,
         DELIVERED
     }
+
     // Shipping address will be stored in users' information
-    private Users customer;
+    @OneToOne
+    @JoinTable(
+            name = "order_list",
+            joinColumns = @JoinColumn(name = "order_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"))
+    private Users users;
     private deliveryStatus status;
-    private ArrayList<ItemQuantity> items = new ArrayList<>();
+
+    @OneToMany
+    @JoinTable(
+            name = "item_list",
+            joinColumns = @JoinColumn(name = "order_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "item_id", referencedColumnName = "id"))
+    @MapKey(name = "itemId")
+    private List<ItemQuantity> items;
+
+    @CreationTimestamp
     private Date createdAt;
 
     public Order () {}
-
-    public int getId() {return id; }
-    public Users getCustomer () { return customer; }
-    public deliveryStatus getStatus () { return status; }
-    public Date getCreationDate () { return createdAt; }
-    public ArrayList<ItemQuantity> getOrderList () { return items; }
-
-    public Order (Users customer, ArrayList<ItemQuantity> items, Date createdAt, deliveryStatus status) {
-        this.customer = customer;
+    public Order (Users users, ArrayList<ItemQuantity> items, deliveryStatus status) {
+        this.users = users;
         this.items = items;
-        this.createdAt = createdAt;
         this.status = status;
     }
 }
