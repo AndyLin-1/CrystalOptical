@@ -52,7 +52,7 @@ public class AuthService {
         user.setLastName(lastName);
         user.setPassword(bCryptPasswordEncoder.encode(password)); // encrypt password using BCrypt
         user.setEnabled(true);
-        user.setRole(UserRole.USER);
+        user.setRole(UserRole.ADMIN);
 
         //Save User into Database
         userRepository.save(user);
