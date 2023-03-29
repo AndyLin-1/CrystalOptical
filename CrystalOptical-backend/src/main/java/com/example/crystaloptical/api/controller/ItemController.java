@@ -1,10 +1,7 @@
 package com.example.crystaloptical.api.controller;
-
-import com.example.crystaloptical.api.dto.request.ItemAddRequest;
 import com.example.crystaloptical.api.service.ItemService;
 import com.example.crystaloptical.model.Item;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -29,6 +26,11 @@ public class ItemController {
     @GetMapping("/list")
     public ResponseEntity<List<Item>> getAllItems() {
         return itemService.getAllItems();
+    }
+
+    @PostMapping("/rate/{id}/{rating}")
+    public ResponseEntity<Double> rateItem(@PathVariable Long id, @PathVariable @Valid int rating) throws Exception {
+        return itemService.rateItem(id, rating);
     }
 
 }

@@ -16,7 +16,7 @@ public class Order {
     @Id
     @SequenceGenerator(name = "order_sequence", sequenceName = "order_sequence", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "order_sequence")
-    private int id;
+    private long id;
 
     public enum deliveryStatus {
         PROCESSING,
@@ -35,7 +35,7 @@ public class Order {
     private Users users;
     private deliveryStatus status;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
             name = "item_list",
             joinColumns = @JoinColumn(name = "order_id", referencedColumnName = "id"),

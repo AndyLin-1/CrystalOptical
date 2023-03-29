@@ -12,7 +12,7 @@ public class Item {
     @Id
     @SequenceGenerator(name = "item_sequence", sequenceName = "item_sequence", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "item_sequence")
-    private Long id;
+    private long id;
 
     /**
      * Attributes based on multiple glasses websites
@@ -44,6 +44,9 @@ public class Item {
 
     private double rating;
 
+    private int ratingScore;
+    private int ratingNumber;
+
     private int itemStock;
 
     //Path to the image
@@ -62,4 +65,9 @@ public class Item {
         this.rating = rating;
         this.itemStock = itemStock;
     }
+
+    public void calculateRating(){
+        this.rating = ((double) ratingScore/ (double) ratingNumber);
+    }
+
 }

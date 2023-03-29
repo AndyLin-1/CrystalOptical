@@ -44,4 +44,17 @@ public class ItemService {
         List<Item> list = itemRepository.findAll().stream().toList();
         return ResponseEntity.ok(list);
     }
+
+    public ResponseEntity<Double> rateItem(Long id, int rating) throws Exception {
+        if(!itemRepository.findById(id).isPresent()){
+            throw new Exception("Item Does Not Exist");
+        }
+        Item item = itemRepository.findById(id).get();
+        item.setRatingScore(item.getRatingScore() + rating);
+        item.setRatingNumber(item.getRatingNumber() + 1);
+        item.calculateRating();
+        itemRepository.save(item);
+        return ResponseEntity.ok(item.getRating());
+
+    }
 }
