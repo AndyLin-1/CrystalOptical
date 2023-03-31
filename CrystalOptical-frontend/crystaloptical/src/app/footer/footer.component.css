@@ -1,0 +1,160 @@
+body{
+  line-height: 1.5;
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+.footer{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+  background-color: black;
+  padding: 10px 0 100px 0;
+}
+
+.container{
+  max-width: 1200px;
+  margin:auto;
+}
+
+.row{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+ul{
+  list-style: none;
+}
+
+
+.footer-col{
+  width: 10%;
+  padding: 0px 60px;
+}
+
+.footer-col h4{
+  font-size: 18px;
+  color: #ffffff;
+  text-transform: capitalize;
+  margin-bottom: 15px;
+  font-weight: 500;
+  position: relative;
+}
+
+.subscribe-p{
+  font-size: 10px;
+  color: #ffffff;
+  font-weight: 300;
+  margin-bottom: 0;
+  display: flex;
+}
+
+.newAppUser-p{
+  font-size: 16px;
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 300;
+  margin-bottom: 0;
+  display: block;
+  padding-bottom: 15px;
+}
+
+.footer-col ul{
+  margin: 0;
+  padding: 0;
+}
+
+.footer-col ul li:not(:last-child){
+  margin-bottom: 10px;
+}
+
+.footer-col ul li a{
+  font-size: 16px;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 300;
+  display: block;
+  transition: all 0.3s ease;
+}
+.footer-col ul li a:hover{
+  color: #ffffff;
+  padding-left: 8px;
+}
+
+.footer-col-social {
+  width: 10%;
+  padding: 0px 50px;
+}
+
+.get-app{
+  display: flex;
+}
+
+.left-QR {
+  flex: 1;
+  padding-right: 30px;
+}
+
+.left-QR img{
+  width: 200%;
+  height: auto;
+}
+
+.right {
+  flex: 2;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.top{
+  padding-bottom: 5px;
+}
+
+.top, .bottom {
+  flex-basis: 100%;
+  padding-left: 5px;
+}
+
+.top img, .bottom img {
+  width: 160%;
+  height: auto;
+}
+
+.social-links{
+  padding-top: 20px;
+}
+
+.footer-col-social h4{
+  font-size: 18px;
+  color: #ffffff;
+  text-transform: capitalize;
+  margin-bottom: 15px;
+  font-weight: 500;
+  position: relative;
+}
+
+.footer-col-social .social-links a{
+  height: 40px;
+  width: 40px;
+  color: #ffffff;
+  transition: all 0.5s ease;
+  margin:0 10px 10px 0;
+}
+
+.footer-col-social .social-links a:hover{
+  color: #24262b;
+  background-color: #ffffff;
+}
+
+/*responsive*/
+@media(max-width: 767px){
+  .footer-col{
+    width: 50%;
+    margin-bottom: 30px;
+  }
+}
+@media(max-width: 574px){
+  .footer-col{
+    width: 100%;
+  }
+}
