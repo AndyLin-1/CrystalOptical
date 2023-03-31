@@ -37,7 +37,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         //Add Non authenticated needed in antMatchers
         httpSecurity.cors();
         httpSecurity.csrf().disable()
-                .authorizeRequests().antMatchers("/api/v1/user/register", "/api/v1/user/login").permitAll()
+                .authorizeRequests().antMatchers("/api/v1/user/register", "/api/v1/user/login",
+                        "/api/v1/item/**").permitAll()
                 .antMatchers(HttpHeaders.ALLOW).permitAll()
                 .anyRequest().authenticated()
                 .and()
