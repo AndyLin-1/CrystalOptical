@@ -28,11 +28,12 @@ public class OrderService {
     }
 
     public ResponseEntity<OrderInfoResponse> sendOrder(OrderRequest orderRequest) {
+        //TODO need to edit item stock after ordering
         Order order = new Order();
         Users user = userRepository.findById(orderRequest.getUserId()).get();
         order.setUsers(user);
         List<ItemQuantity> itemQuantityArrayList = new ArrayList<>();
-        //Convert ItemQuanitty Dto to item quantities
+        //Convert ItemQuantity Dto to item quantities
         for(ItemQuantityDto orderItem : orderRequest.getOrder()){
             ItemQuantity i = new ItemQuantity();
             i.setItemId(orderItem.getItemId());

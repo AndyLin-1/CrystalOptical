@@ -44,6 +44,7 @@ public class Item {
 
     private double rating;
 
+    //TODO Arraylist of reviews -> Reviews are items with rating and comment
     private int ratingScore;
     private int ratingNumber;
 
