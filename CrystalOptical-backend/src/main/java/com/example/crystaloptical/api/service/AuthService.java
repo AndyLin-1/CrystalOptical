@@ -36,7 +36,7 @@ public class AuthService {
         this.jwtTokenService = jwtTokenService;
     }
 
-    public String registerUser(@Valid UserRegisterRequest userRegisterRequest) throws Exception {
+    public ResponseEntity<String> registerUser(@Valid UserRegisterRequest userRegisterRequest) throws Exception {
         String email = userRegisterRequest.getEmail();
         String password = userRegisterRequest.getPassword();
         String firstName = userRegisterRequest.getFirstName();
@@ -62,7 +62,7 @@ public class AuthService {
         //JWT
 
 //        UserAuthRequest login = UserAuthRequest.builder().email(user.getEmail()).password(user.getPassword()).build();
-        return "Success";
+        return ResponseEntity.ok().body("Success");
     }
 
     public ResponseEntity<UserLoginResponse> loginUser(@Valid UserAuthRequest userAuthRequest) throws Exception {

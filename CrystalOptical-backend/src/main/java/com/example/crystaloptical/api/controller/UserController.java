@@ -34,7 +34,7 @@ public class UserController {
      */
     @ResponseStatus(OK)
     @PostMapping("/register")
-    public String registerUser(
+    public ResponseEntity<String> registerUser(
             @Valid @RequestBody UserRegisterRequest userRegisterRequest) throws Exception {
         return authService.registerUser(userRegisterRequest);
     }
