@@ -8,10 +8,11 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import { SimpleRegisterComponent } from './modules/simple-register/simple-register.component';
 import { SimpleItemComponent } from './modules/simple-item/simple-item.component';
+import { AppHeaderComponent } from './app-header/app-header.component';
 
 
 @NgModule({
-  declarations: [AppComponent, SimpleInterfaceComponent, SimpleRegisterComponent, SimpleItemComponent],
+  declarations: [AppComponent, SimpleInterfaceComponent, SimpleRegisterComponent, SimpleItemComponent, AppHeaderComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
