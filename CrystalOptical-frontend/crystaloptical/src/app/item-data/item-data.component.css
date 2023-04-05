@@ -1,0 +1,86 @@
+div {
+  border: black solid 3px;
+}
+
+.container {
+  display: flex;
+}
+
+.data-box {
+  width: 50%;
+  /* Space between image and data box */
+  margin-right: 10%;
+  margin-left: 10%;
+}
+
+.image-box {
+  margin-left: 10%;
+  width: 50%;
+}
+
+.sizes {
+  display: flex;
+}
+
+.colors {
+  display: flex;
+}
+
+.glasses {
+  max-width: 100%;
+  height: auto;
+}
+
+.options-2 {
+  width: fit-content;
+  block-size: fit-content;
+}
+
+.sizes mat-button-toggle {
+  margin-right: 10px;
+  border: black solid 3px;
+  border-radius: 10px;
+  width: 40px;
+  height: auto;
+}
+
+.colors mat-button-toggle {
+  margin-right: 10px;
+  border-radius: 50px;
+  width: 10%;
+  height: 30%;
+  margin-top: 10%;
+}
+
+.sizes .mat-button-toggle-checked {
+  background-color: #d74148;
+  color: #fafafa;
+}
+
+.colors .mat-button-toggle-checked {
+  border: white solid 2px;
+  border-left-width: 2px;
+  outline: black solid 2px;
+}
+
+.colors .mat-button-toggle-group {
+  padding-left: 2%;
+}
+
+.buy-now-button {
+  background-color: #d74148;
+  color: white;
+}
+
+.increment-counter {
+  width: fit-content;
+}
+
+.options-2 div {
+  width: fit-content;
+}
+
+.related-items-container {
+  border: red solid 2px;
+  margin-left: 100px;
+}

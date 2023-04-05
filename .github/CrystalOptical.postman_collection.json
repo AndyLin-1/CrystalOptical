@@ -1,0 +1,362 @@
+{
+	"info": {
+		"_postman_id": "4c58aa6e-78b8-452a-9ed6-f99dd4feca98",
+		"name": "CrystalOptical",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25532304"
+	},
+	"item": [
+		{
+			"name": "Register",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"  pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\": \"Andy\",\n    \"lastName\": \"Lin\",\n    \"email\": \"www.andy@hotmail.ca\",\n    \"password\": \"password\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8383/api/v1/user/register",
+					"host": [
+						"localhost"
+					],
+					"port": "8383",
+					"path": [
+						"api",
+						"v1",
+						"user",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"www.andy@hotmail.ca\",\n    \"password\": \"password\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8383/api/v1/user/login",
+					"host": [
+						"localhost"
+					],
+					"port": "8383",
+					"path": [
+						"api",
+						"v1",
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAlltems",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8383/api/v1/item/list",
+					"host": [
+						"localhost"
+					],
+					"port": "8383",
+					"path": [
+						"api",
+						"v1",
+						"item",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetItemStock",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8383/api/v1/item/stock/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8383",
+					"path": [
+						"api",
+						"v1",
+						"item",
+						"stock",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddItem",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ3d3cuYW5keUBob3RtYWlsLmNhIiwiZXhwIjoxNjgwMzEyNjU0fQ.fOGCDvvy-FFK4O3Y9fMPk_1We8UcSKP321xlLKT9mbOiw0HF-VTvlw0zCdzrJ0ZYsghaXAOPQ-2ZsAe5caanuA",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Glasses3\",\n    \"price\": \"300.99\",\n    \"brand\": \"Gucci\",\n    \"frameSize\": \"Medium\",\n    \"colour\": \"red\",\n    \"itemStock\": \"23a\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8383/api/v1/admin/addItem",
+					"host": [
+						"localhost"
+					],
+					"port": "8383",
+					"path": [
+						"api",
+						"v1",
+						"admin",
+						"addItem"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ratings",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:8383/api/v1/item/rate/1/5",
+					"host": [
+						"localhost"
+					],
+					"port": "8383",
+					"path": [
+						"api",
+						"v1",
+						"item",
+						"rate",
+						"1",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Order",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ3d3cuYW5keUBob3RtYWlsLmNhIiwiZXhwIjoxNjgwMTU5OTU0fQ.bA5K_gzmgzYmMSY-wO6YzIOr7y5lDG-WdfK5Yf9HX-ZS0n54zv0nONPB8BjyCc1y0qRLZ4VIW3ssfHKMplf6dA",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userId\": 1,\n    \"order\": [\n        {\n            \"itemId\": 1,\n            \"quantity\": 1 \n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8383/api/v1/order/order",
+					"host": [
+						"localhost"
+					],
+					"port": "8383",
+					"path": [
+						"api",
+						"v1",
+						"order",
+						"order"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getOrderInfo",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ3d3cuYW5keUBob3RtYWlsLmNhIiwiZXhwIjoxNjgwMTU5OTU0fQ.bA5K_gzmgzYmMSY-wO6YzIOr7y5lDG-WdfK5Yf9HX-ZS0n54zv0nONPB8BjyCc1y0qRLZ4VIW3ssfHKMplf6dA",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8383/api/v1/order/orderinfo/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8383",
+					"path": [
+						"api",
+						"v1",
+						"order",
+						"orderinfo",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AdminRoleTest",
+			"request": {
+				"auth": {
+					"type": "jwt",
+					"jwt": [
+						{
+							"key": "secret",
+							"value": "",
+							"type": "string"
+						},
+						{
+							"key": "isSecretBase64Encoded",
+							"value": false,
+							"type": "boolean"
+						},
+						{
+							"key": "payload",
+							"value": "",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "header",
+							"value": "",
+							"type": "string"
+						},
+						{
+							"key": "algorithm",
+							"value": "HS512",
+							"type": "string"
+						},
+						{
+							"key": "headerPrefix",
+							"value": "Bearer",
+							"type": "string"
+						},
+						{
+							"key": "queryParamKey",
+							"value": "token",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ3d3cuYW5keUBob3RtYWlsLmNhIiwiZXhwIjoxNjgwMTU5OTU0fQ.bA5K_gzmgzYmMSY-wO6YzIOr7y5lDG-WdfK5Yf9HX-ZS0n54zv0nONPB8BjyCc1y0qRLZ4VIW3ssfHKMplf6dA",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8383/api/v1/user/forAdmin",
+					"host": [
+						"localhost"
+					],
+					"port": "8383",
+					"path": [
+						"api",
+						"v1",
+						"user",
+						"forAdmin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UserRoleTest",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ3d3cuYW5keUBob3RtYWlsLmNhIiwiZXhwIjoxNjgwMDU1MjY1fQ.yADyDT-x99Cs6dSsjuzfgtbb2NE9doTnkWNkywQhrLBx-zAr6AibsWoJFZekgv0dZ1zOOLSAZ9fk_SxQNrJtUQ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8383/api/v1/user/forUser",
+					"host": [
+						"localhost"
+					],
+					"port": "8383",
+					"path": [
+						"api",
+						"v1",
+						"user",
+						"forUser"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
