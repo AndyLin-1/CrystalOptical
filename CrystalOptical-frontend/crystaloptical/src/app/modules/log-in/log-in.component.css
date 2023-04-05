@@ -1,0 +1,167 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-height: 100vh;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px; /* Add some padding to the container */
+}
+
+.image {
+  width: 50%;
+  margin-left: 100px;
+}
+
+.image img {
+  max-width: 100%;
+  height: auto;
+}
+
+.form-section {
+  width: 40%;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.login-section {
+  width: 80%;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.login-paragraph{
+  margin-bottom: 30px;
+}
+
+.form {
+  width: 100%;
+  background-color: transparent;
+}
+
+.form-title {
+  margin-top: 0;
+}
+
+.form-header{
+  margin-bottom: 30px;
+}
+
+form div {
+  margin-bottom: 10px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.form-group label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.login-button{
+  margin-top: 20px;
+  margin-right: 80px;
+  display: inline-block;
+}
+
+.forgot-password{
+  margin-top: 20px;
+  display: inline-block;
+}
+
+.forgot-password a {
+  color: red;
+}
+
+
+.form-group input {
+  border: none;
+  border-bottom: 2px solid lightgray;
+  background-color: transparent;
+  outline: none;
+  font-size: 16px;
+  padding: 5px;
+  width: 100%;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-bottom: 2px solid black;
+}
+
+.forgot-password {
+  margin-top: 20px;
+  text-align: right;
+}
+
+.signup-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.signup-link a {
+  color: #008000;
+}
+
+input[type="email"], input[type="password"] {
+  height: 20px;
+  width: 300px;
+}
+
+button[type="submit"] {
+  background-color: #d74148;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: lightcoral;
+}
+
+.forgot-password {
+  margin-top: 20px;
+  text-align: right;
+  display: inline-block;
+  margin-left: 10px;
+
+}
+
+.forgot-password a {
+  color: red;
+  text-decoration: none;
+}
+
+.forgot-password:hover {
+  text-decoration: lightcoral;
+}
+
+.grey-text {
+  color: #555;
+  font-size: 16px;
+  font-weight: 400;
+  margin-right: 80px;
+}
+
+.signup-link a {
+  color: #555;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: underline;
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Create an Account</title>
+  <link rel="stylesheet" href="create-account.component.css">
+</head>
+<body>
+<div class="container">
+  <div class="image">
+    <img src="https://via.placeholder.com/500x500" alt="placeholder image">
+  </div>
+  <div class="form-section">
+    <div class="form">
+      <h2 class="form-title">Create an Account</h2>
+      <div class="form-header">
+        <small>Enter your details below</small>
+      </div>
+      <form>
+        <div class="form-group">
+          <input type="text" id="username" name="username" placeholder="username" [required]>
+        </div>
+        <div class="form-group">
+          <input type="email" id="email" name="email" placeholder="email" [required]>
+        </div>
+        <div class="form-group">
+          <input type="password" id="password" name="password" placeholder="password" [required]>
+        </div>
+        <button type="submit">Create Account</button>
+      </form>
+      <div class="login-section">
+        <p class="grey-text">Already have an account?</p>
+        <a href="#" class="login-link">Log in</a>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
