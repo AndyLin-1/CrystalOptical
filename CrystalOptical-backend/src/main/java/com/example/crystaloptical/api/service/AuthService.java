@@ -7,22 +7,15 @@ import com.example.crystaloptical.model.ConfirmationToken;
 import com.example.crystaloptical.model.UserRole;
 import com.example.crystaloptical.model.Users;
 import com.example.crystaloptical.model.repo.UserRepository;
-import jdk.jshell.execution.Util;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.validation.Valid;
 import java.security.SecureRandom;
 import java.time.LocalDateTime;
-import java.util.Map;
-import java.util.Optional;
 import java.util.UUID;
-
-import static org.springframework.http.HttpStatus.BAD_REQUEST;
 
 @Service
 public class AuthService {
@@ -31,18 +24,19 @@ public class AuthService {
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final ConfirmationTokenService confirmationTokenService;
-    private final AuthenticationManager authenticationManager;
+    private final JwtTokenService jwtTokenService;
 
 
-    public AuthService(UserService userService, UserRepository userRepository, BCryptPasswordEncoder bCryptPasswordEncoder, ConfirmationTokenService confirmationTokenService, AuthenticationManager authenticationManager){
+    public AuthService(UserService userService, UserRepository userRepository, BCryptPasswordEncoder bCryptPasswordEncoder,
+                       ConfirmationTokenService confirmationTokenService, JwtTokenService jwtTokenService){
         this.userService = userService;
         this.userRepository = userRepository;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
         this.confirmationTokenService = confirmationTokenService;
-        this.authenticationManager = authenticationManager;
+        this.jwtTokenService = jwtTokenService;
     }
 
-    public ResponseEntity<UserLoginResponse> registerUser(@Valid UserRegisterRequest userRegisterRequest) throws Exception {
+    public ResponseEntity<String> registerUser(@Valid UserRegisterRequest userRegisterRequest) throws Exception {
         String email = userRegisterRequest.getEmail();
         String password = userRegisterRequest.getPassword();
         String firstName = userRegisterRequest.getFirstName();
@@ -58,41 +52,25 @@ public class AuthService {
         user.setLastName(lastName);
         user.setPassword(bCryptPasswordEncoder.encode(password)); // encrypt password using BCrypt
         user.setEnabled(true);
-        user.setUserRole(UserRole.USER);
+        user.setRole(UserRole.ADMIN);
 
         //Save User into Database
         userRepository.save(user);
 
         //Confirmation Token need to send Email
 
-        return ResponseEntity.ok().body(UserLoginResponse.builder().jwt(user.getEmail()).jwtRefresh(user.getPassword()).build());
+        //JWT
+
+//        UserAuthRequest login = UserAuthRequest.builder().email(user.getEmail()).password(user.getPassword()).build();
+        return ResponseEntity.ok().body("Success");
     }
 
-    public String loginUser(@Valid UserAuthRequest userAuthRequest) throws Exception {
+    public ResponseEntity<UserLoginResponse> loginUser(@Valid UserAuthRequest userAuthRequest) throws Exception {
         if (!userService.userWithEmailExists(userAuthRequest.getEmail())) {
             throw new Exception("Email not registered");
         }
-
-        final Optional<Authentication> authentication = authenticateUser(userAuthRequest);
-
-        if (authentication.isEmpty()) {
-            return "wrong password";
-        }
-
-        return "success";
+        return ResponseEntity.ok().body(jwtTokenService.createUserLoginResponse(userAuthRequest));
     }
-
-    public Optional<Authentication> authenticateUser(UserAuthRequest userAuthRequest) throws Exception {
-        try {
-            return Optional.ofNullable(
-                    authenticationManager.authenticate(
-                            new UsernamePasswordAuthenticationToken(
-                                    userAuthRequest.getEmail(), userAuthRequest.getPassword())));
-        } catch (Exception e) {
-            throw new Exception(e.getMessage());
-        }
-    }
-
 
     private void sendConfirmationEmail(Users user) {
         if (!user.isEnabled()) {
@@ -107,7 +85,7 @@ public class AuthService {
             confirmationToken.setUser(user);
             confirmationTokenService.saveConfirmationToken(confirmationToken);
 
-            String apiUrl = "localhost:8383/api/v1";
+//            String apiUrl = "localhost:8383/api/v1";
             //TODO send Email and confirm token
         }
     }

@@ -22,7 +22,7 @@ public class Users implements UserDetails {
     @Id
     @SequenceGenerator(name = "user_sequence", sequenceName = "user_sequence", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_sequence")
-    private int id;
+    private long id;
 
     @Column(updatable = false)
     @CreationTimestamp
@@ -35,7 +35,7 @@ public class Users implements UserDetails {
     private String lastName;
     private String password;
 
-    public UserRole userRole;
+    public UserRole role;
     private Boolean locked = false;
     private Boolean enabled = false;
 
@@ -49,7 +49,7 @@ public class Users implements UserDetails {
     //Roles Need to be added later
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        SimpleGrantedAuthority authority = new SimpleGrantedAuthority(userRole.name());
+        SimpleGrantedAuthority authority = new SimpleGrantedAuthority(role.name());
         return Collections.singletonList(authority);
     }
 
@@ -87,7 +87,7 @@ public class Users implements UserDetails {
         this.id = id;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 }
