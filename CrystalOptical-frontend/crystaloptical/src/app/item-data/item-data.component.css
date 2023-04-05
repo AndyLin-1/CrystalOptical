@@ -32,8 +32,12 @@ div {
 }
 
 .options-2 {
-  width: fit-content;
-  block-size: fit-content;
+  display: flex;
+}
+
+.options-2 div {
+  flex-grow: 1; /* default 0 */
+
 }
 
 .sizes mat-button-toggle {
@@ -76,9 +80,7 @@ div {
   width: fit-content;
 }
 
-.options-2 div {
-  width: fit-content;
-}
+
 
 .related-items-container {
   border: red solid 2px;

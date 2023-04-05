@@ -44,6 +44,14 @@
     </div>
     <div class="options-2">
       <div class="increment-counter">
+        <button (click)="decrementQuantity()">-</button>
+        <input disabled
+               type="text"
+               class="input"
+               placeholder="Enter your task"
+               [(ngModel)]="quantity_value">
+        <button (click)="incrementQuantity()">+</button>
+
         <!--<increment-input></increment-input>-->
       </div>
 
