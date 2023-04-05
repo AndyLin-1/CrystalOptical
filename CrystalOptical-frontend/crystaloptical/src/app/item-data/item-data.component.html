@@ -1,0 +1,67 @@
+<p>item-data works!</p>
+
+<div class="container">
+
+  <div class="image-box">
+    <img src="assets/singular-item/test_glasses.png" class="glasses">
+  </div>
+
+
+  <div class="data-box">
+    <div class="description">
+      <h1>{{ glassesTitle }}</h1>
+      <h2>{{ price }}</h2>
+      <p> {{ description }}</p>
+      <hr>
+      <!--<img src="assets/singular-item/test_glasses.png" class="glasses">-->
+    </div>
+
+    <div class="options-1">
+      <div class="colors">
+        <p style="margin-right:5%;">Colors: </p>
+        <mat-button-toggle-group name="favoriteColor" aria-label="Favorite Color">
+          <mat-button-toggle style="background-color: #f7dae5;" value="color1" >  </mat-button-toggle>
+          <mat-button-toggle style="background-color: #fff2e1;" value="color2">  </mat-button-toggle>
+          <mat-button-toggle style="background-color: #c3e2e6;" value="color3">  </mat-button-toggle>
+          <mat-button-toggle style="background-color: #d0cce0;" value="color4">  </mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+
+      <div class="sizes">
+        <p style="margin-right: 5%;">Size: </p>
+        <mat-button-toggle-group name="favoriteColor" aria-label="Favorite Color">
+          <mat-button-toggle value="XS">XS</mat-button-toggle>
+          <p></p>
+          <mat-button-toggle value="S">S</mat-button-toggle>
+          <p></p>
+          <mat-button-toggle value="M">M</mat-button-toggle>
+          <p></p>
+          <mat-button-toggle value="L">L</mat-button-toggle>
+          <p></p>
+          <mat-button-toggle value="XL">XL</mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+    </div>
+    <div class="options-2">
+      <div class="increment-counter">
+        <!--<increment-input></increment-input>-->
+      </div>
+
+
+      <div>
+        <button mat-button class="buy-now-button">Buy Now</button>
+      </div>
+      <div>
+        <button mat-button class="shopping-cart-icon"><img src="assets/header/Cart1%20with%20buy.png"></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="related-items-container">
+  <!-- ngFor loop to print a bunch of related items -->
+  <br />
+  <h1>Related Items</h1>
+  <related-item></related-item>
+
+</div>
