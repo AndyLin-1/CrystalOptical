@@ -1,0 +1,54 @@
+.button-container {
+  display: flex;
+/*  border: black solid 2px; */
+  padding-right: 10%;
+  padding-left: 10%;
+}
+
+.button-container div {
+  flex-grow: 1;
+/*  border: black solid 2px; */
+}
+
+.align-left {
+  text-align: left;
+}
+
+.left-button, .right-button {
+  border: black solid 1px;
+  width: 75%;
+  height: 150%;
+}
+
+.align-right {
+  text-align: right;
+
+}
+
+.total-container {
+  display: flex;
+  padding-right: 35%;
+  padding-left: 35%;
+  border: black solid 1px;
+
+}
+
+.inside-total-container {
+  flex-grow: 1;
+
+
+}
+
+.hr-styling {
+  padding-right: 35%;
+  padding-left: 35%;
+}
+.reduce-p-margin {
+  margin: 0;
+}
+
+.proceed-button {
+  border: black solid 1px;
+  justify-content: center;
+}
+

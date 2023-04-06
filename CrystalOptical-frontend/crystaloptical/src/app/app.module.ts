@@ -13,19 +13,27 @@ import { ItemDataComponent } from './item-data/item-data.component';
 import { RelatedItemComponent } from './related-item/related-item.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
+import { CheckoutTitleHeaderComponent } from './checkout-title-header/checkout-title-header.component';
+import { SingularItemPageComponent } from './singular-item-page/singular-item-page.component';
+import { CheckoutPageComponent } from './checkout-page/checkout-page.component';
+import { CheckoutItemComponent } from './checkout-item/checkout-item.component';
+import {MatInputModule} from "@angular/material/input";
+import {MatButtonModule} from "@angular/material/button";
 
 
 @NgModule({
-  declarations: [AppComponent, SimpleInterfaceComponent, SimpleRegisterComponent, SimpleItemComponent, AppHeaderComponent, ItemDataComponent, RelatedItemComponent],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    NoopAnimationsModule,
-    MatButtonToggleModule
-  ],
+  declarations: [AppComponent, SimpleInterfaceComponent, SimpleRegisterComponent, SimpleItemComponent, AppHeaderComponent, ItemDataComponent, RelatedItemComponent, CheckoutTitleHeaderComponent, SingularItemPageComponent, CheckoutPageComponent, CheckoutItemComponent],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        NoopAnimationsModule,
+        MatButtonToggleModule,
+        MatInputModule,
+        MatButtonModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

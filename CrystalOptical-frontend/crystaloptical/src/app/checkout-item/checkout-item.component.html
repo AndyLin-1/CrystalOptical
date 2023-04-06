@@ -1,0 +1,26 @@
+<div class="item-container" *ngFor="let item of items">
+
+  <div class="thumbnail-title">
+    <img src="assets/singular-item/test_glasses.png">
+    <p>{{ item.name }}</p>
+  </div>
+  <div class="price"><p>{{ item.price }}</p></div>
+  <div class="quantity">
+    <form class="example-form">
+      <mat-form-field class="example-full-width" style="width: 3em">
+        <input type="number" style="width: 3em" matInput onKeyDown="return false" min=1 max=5 value= "{{ item.quantity }}">
+      </mat-form-field>
+    </form>
+
+
+
+  </div>
+  <div class="subtotal"><p>${{ (item.price * item.quantity).toFixed(2) }}</p></div>
+</div>
+
+
+<!-- image thumbnail + glasses_title
+  price
+  quantity + arrow picker
+  subtotal (price * quantity)
+-->
