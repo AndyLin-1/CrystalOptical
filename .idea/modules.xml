@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/CrystalOptical-frontend.iml" filepath="$PROJECT_DIR$/.idea/CrystalOptical-frontend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/CrystalOptical.iml" filepath="$PROJECT_DIR$/.idea/CrystalOptical.iml" />
     </modules>
   </component>
 </project>
