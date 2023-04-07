@@ -3,6 +3,7 @@
 /*  border: black solid 2px; */
   padding-right: 10%;
   padding-left: 10%;
+
 }
 
 .button-container div {
@@ -27,28 +28,36 @@
 
 .total-container {
   display: flex;
-  padding-right: 35%;
-  padding-left: 35%;
+
   border: black solid 1px;
+  justify-content: center;
 
 }
 
 .inside-total-container {
   flex-grow: 1;
-
-
+  border: red solid 1px;
 }
 
 .hr-styling {
-  padding-right: 35%;
-  padding-left: 35%;
 }
 .reduce-p-margin {
   margin: 0;
 }
 
-.proceed-button {
-  border: black solid 1px;
+.checkout-button {
   justify-content: center;
+  border: purple solid 3px;
+
 }
 
+.container-box {
+  border: green solid 2px;
+  padding-right: 30%;
+  padding-left: 30%;
+}
+
+.inner-box {
+  border: green solid 2px;
+
+}
