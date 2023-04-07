@@ -1,5 +1,6 @@
 # Build
 FROM --platform=$BUILDPLATFORM openjdk:19 AS builder
+RUN microdnf install findutils
 WORKDIR app/
 COPY --chown=gradle:gradle . .
 RUN --mount=type=cache,target=/root/.gradle ./gradlew build -x test
@@ -18,7 +19,7 @@ COPY --from=builder ${DEPENDENCY}/META-INF ${SRC}/META-INF
 COPY --from=builder ${DEPENDENCY}/BOOT-INF/classes ${SRC}
 COPY --from=builder ${DEPENDENCY}/BOOT-INF/lib ${SRC}/libs
 WORKDIR ${SRC}
-# yucode user
+# crystaloptical user
 RUN addgroup crystaloptical && adduser --disabled-password --disabled-login --ingroup crystaloptical --home ${SRC} crystaloptical
 RUN echo 'crystaloptical:' | chpasswd -e
 RUN chown -R crystaloptical:crystaloptical /usr/crystaloptical
@@ -26,4 +27,4 @@ RUN chown -R crystaloptical:crystaloptical /usr/crystaloptical
 USER crystaloptical
 
 EXPOSE 8383
-ENTRYPOINT ["java","-jar","-cp","./:./libs/*","com.example.crystaloptical.CrystalopticalApplication"]
+ENTRYPOINT ["java","-cp","./:./libs/*","com.example.crystaloptical.CrystalopticalApplication"]

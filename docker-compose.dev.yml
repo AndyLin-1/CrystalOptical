@@ -8,23 +8,26 @@ services:
       - POSTGRES_USER=admin
       - POSTGRES_PASSWORD=admin
       - POSTGRES_DB=crystaloptical
-  # server:
-  #   build:
-  #     context: ./CrystalOptical-backend
-  #     dockerfile: Dockerfile
-  #   restart: on-failure
-  #   image: crystaloptical/server-dev:latest
-  #   ports:
-  #     - "8383:8383"
-  #   depends_on:
-  #     - database
+  server:
+    build:
+      context: ./CrystalOptical-backend
+      dockerfile: Dockerfile
+    restart: on-failure
+    image: crystaloptical/server-dev:latest
+    ports:
+      - "8383:8383"
+    depends_on:
+      - database
   client:
     build:
       context: ./CrystalOptical-frontend
       dockerfile: Dockerfile
+    command: yarn start:dev
+    volumes:
+      - ./CrystalOptical-frontend:/app
+      - /app/node_modules
     restart: on-failure
     image: crystaloptical/client:latest
     ports:
       - "4200:4200"
-    depends_on:
-      - database
+
