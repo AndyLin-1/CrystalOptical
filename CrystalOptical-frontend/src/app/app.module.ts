@@ -13,6 +13,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import { CreateAccountComponent } from './modules/create-account/create-account.component';
 import { LogInComponent } from './modules/log-in/log-in.component';
+import {NgOptimizedImage} from "@angular/common";
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { LogInComponent } from './modules/log-in/log-in.component';
     ReactiveFormsModule,
     HttpClientModule,
     NoopAnimationsModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    NgOptimizedImage
   ],
   providers: [],
   bootstrap: [AppComponent]

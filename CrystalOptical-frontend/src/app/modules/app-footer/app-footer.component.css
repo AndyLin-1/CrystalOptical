@@ -29,6 +29,7 @@ ul{
 .footer-col{
   width: 10%;
   padding: 0px 60px;
+  flex-wrap: wrap;
 }
 
 .footer-col h4{
@@ -61,6 +62,7 @@ ul{
 .footer-col ul{
   margin: 0;
   padding: 0;
+  flex-wrap: wrap;
 }
 
 .footer-col ul li:not(:last-child){
@@ -87,36 +89,28 @@ ul{
 
 .get-app{
   display: flex;
-}
-
-.left-QR {
-  flex: 1;
-  padding-right: 30px;
-}
-
-.left-QR img{
-  width: 200%;
-  height: auto;
-}
-
-.right {
-  flex: 2;
-  display: flex;
   flex-wrap: wrap;
+  align-items: center;
 }
 
-.top{
-  padding-bottom: 5px;
+.store-links{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center; /* center the images horizontally */
+  margin-left: 100px; /* add margin to separate from the QR code */
 }
 
-.top, .bottom {
-  flex-basis: 100%;
-  padding-left: 5px;
-}
 
-.top img, .bottom img {
-  width: 160%;
+.google-play, .app-store {
+  max-width: 400%; /* adjust as needed */
   height: auto;
+  margin: 5px;
+}
+
+.qrcode{
+  width: 60px;
+  float: left;
 }
 
 .social-links{
@@ -143,17 +137,4 @@ ul{
 .footer-col-social .social-links a:hover{
   color: #24262b;
   background-color: #ffffff;
-}
-
-/*responsive*/
-@media(max-width: 767px){
-  .footer-col{
-    width: 50%;
-    margin-bottom: 30px;
-  }
-}
-@media(max-width: 574px){
-  .footer-col{
-    width: 100%;
-  }
 }
