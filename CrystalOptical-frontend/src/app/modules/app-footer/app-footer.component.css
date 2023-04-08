@@ -9,10 +9,11 @@ body{
   box-sizing: border-box;
   background-color: black;
   padding: 10px 0 100px 0;
+  width: 100%;
 }
 
 .container{
-  max-width: 1200px;
+  min-width: 100%;
   margin:auto;
 }
 
@@ -98,18 +99,18 @@ ul{
   align-items: center;
   flex-direction: column;
   justify-content: center; /* center the images horizontally */
-  margin-left: 100px; /* add margin to separate from the QR code */
+  margin-left: 60px; /* add margin to separate from the QR code */
 }
 
 
 .google-play, .app-store {
-  max-width: 400%; /* adjust as needed */
+  max-width: 100px; /* adjust as needed */
   height: auto;
   margin: 5px;
 }
 
 .qrcode{
-  width: 60px;
+  width: 70px;
   float: left;
 }
 
