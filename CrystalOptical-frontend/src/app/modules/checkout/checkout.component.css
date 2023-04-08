@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.shipping-section {
+  width: 20%;
+  margin-right: 2%;
+}
+
+.payment-section {
+  width: 25%;
+  margin-left: 20px; /* adjust as needed */
+}
+
+.cart-summary {
+  width: 20%;
+  margin-right: 2%;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
