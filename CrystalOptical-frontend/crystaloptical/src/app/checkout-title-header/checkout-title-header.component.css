@@ -1,17 +1,16 @@
 .header-container {
-  border: black solid 2px;
+  border: lightgrey solid 2px;
+  border-radius: 7px;
   display: flex;
   margin: 10% 10% 2%;
 
 }
 
 .header {
-  border: red solid 2px;
   flex-grow: 1; /* default 0 */
 }
 
 h1 {
-  border: black solid 2px;
   display: flex;
   align-items: center;
   justify-content: center;

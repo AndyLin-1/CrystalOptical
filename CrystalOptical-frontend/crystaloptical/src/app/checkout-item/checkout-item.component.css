@@ -1,15 +1,14 @@
 
 
 .item-container {
-  border: black solid 2px;
+  border: lightgrey solid 2px;
+  border-radius: 7px;
   display: flex;
   margin: 0% 10% 5%;
-
-
 }
 
 .item-container div {
-  border: black solid 2px;
+
   flex-grow: 1;
   display: flex;
   align-items: center;
@@ -17,7 +16,6 @@
 }
 
 .thumbnail-title {
-  border: red solid 2px;
   display: flex;
 }
 
@@ -28,4 +26,13 @@ img {
 
 ::ng-deep .mat-form-field-underline {
   display: none;
+}
+
+input {
+  border: lightgrey solid 1px;
+  border-radius: 3px;
+}
+
+.error-no-items {
+  text-align: center;
 }

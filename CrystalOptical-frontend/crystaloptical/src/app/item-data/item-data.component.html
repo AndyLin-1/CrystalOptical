@@ -1,16 +1,13 @@
-<p>item-data works!</p>
-
 <div class="container">
-
   <div class="image-box">
-    <img src="assets/singular-item/test_glasses.png" class="glasses">
+    <img src="{{ imageList[0].imagePath }}" width="250" height="200" class="glasses">
   </div>
 
 
   <div class="data-box">
     <div class="description">
-      <h1>{{ glassesTitle }}</h1>
-      <h2>{{ price }}</h2>
+      <h1>{{ imageList[0].brand + ' ' + imageList[0].name }}</h1>
+      <h2>${{ imageList[0].price }}</h2>
       <p> {{ description }}</p>
       <hr>
       <!--<img src="assets/singular-item/test_glasses.png" class="glasses">-->
@@ -26,7 +23,7 @@
           <mat-button-toggle style="background-color: #d0cce0;" value="color4">  </mat-button-toggle>
         </mat-button-toggle-group>
       </div>
-
+      <br />
       <div class="sizes">
         <p style="margin-right: 5%;">Size: </p>
         <mat-button-toggle-group name="favoriteColor" aria-label="Favorite Color">
@@ -42,29 +39,89 @@
         </mat-button-toggle-group>
       </div>
     </div>
+    <br />
     <div class="options-2">
       <div class="increment-counter">
-        <button (click)="decrementQuantity()">-</button>
+        <button mat-button class="increment-counter-buttons" (click)="decrementQuantity()">-</button>
         <input disabled
+               style="text-align: center; background-color: white; border: black solid 1px;"
+               size="1"
                type="text"
                class="input"
                placeholder="Enter your task"
                [(ngModel)]="quantity_value">
-        <button (click)="incrementQuantity()">+</button>
-
+        <button mat-button class="increment-counter-buttons"
+                (click)="incrementQuantity()"
+                style="background-color: #d74148;
+                      color: white;
+                      ">+
+        </button>
+        <button mat-button class="buy-now-button">Buy Now</button>
+        <button mat-button class="shopping-cart-icon"><img src="{{ imageList[1].imagePath }}"></button>
         <!--<increment-input></increment-input>-->
       </div>
 
 
       <div>
-        <button mat-button class="buy-now-button">Buy Now</button>
+
       </div>
       <div>
-        <button mat-button class="shopping-cart-icon"><img src="assets/header/Cart1%20with%20buy.png"></button>
+
+      </div>
+    </div>
+    <br/>
+
+    <div class="mega-div-container">
+      <div class="customer-options-container-1">
+        <div class="table-container-1">
+          <img src="{{ imageList[2].imagePath }}" width="100">
+        </div>
+        <div class="table-container-2">
+          <h3>Free Delivery!</h3>
+          <p><a href="">Enter your postal code for Delivery Availability</a></p>
+
+        </div>
+      </div>
+
+      <div class="customer-options-container-2">
+        <div class="table-container-1">
+          <img src="{{ imageList[3].imagePath }}" width="100">
+        </div>
+        <div class="table-container-2">
+          <h3>Book An Appointment</h3>
+
+          <p>Open 7 Days a week</p>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
+
+
+
+<br />
+<br />
+<div class="virtual-try-on-container">
+  <div class="vto-box-1">
+  <img src="{{ imageList[4].imagePath }}">
+  </div>
+  <div class="vto-box-2">
+    <br/>
+    <br/>
+    <br/>
+    <h1>Virtual Try On</h1>
+    <br/>
+    <button mat-button class="camera-icon"><img src="{{ imageList[5].imagePath }}" width="10%"></button>
+  </div>
+
+
+
+
+</div>
+
+
+
 
 <div class="related-items-container">
   <!-- ngFor loop to print a bunch of related items -->
