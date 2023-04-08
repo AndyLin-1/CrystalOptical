@@ -14,11 +14,11 @@ import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import { CreateAccountComponent } from './modules/create-account/create-account.component';
 import { LogInComponent } from './modules/log-in/log-in.component';
 import {NgOptimizedImage} from "@angular/common";
-import { PaymentComponent } from './modules/payment/payment.component';
+import { CheckComponent } from './modules/checkout/check.component';
 
 
 @NgModule({
-  declarations: [AppComponent, AppHeaderComponent, AppFooterComponent, ItemDataComponent, RelatedItemComponent, CreateAccountComponent, LogInComponent, PaymentComponent],
+  declarations: [AppComponent, AppHeaderComponent, AppFooterComponent, ItemDataComponent, RelatedItemComponent, CreateAccountComponent, LogInComponent, CheckComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

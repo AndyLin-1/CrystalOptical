@@ -8,7 +8,6 @@ body{
   margin:0;
   box-sizing: border-box;
   background-color: black;
-  padding: 10px 0 100px 0;
   width: 100%;
 }
 
@@ -18,8 +17,10 @@ body{
 }
 
 .row{
+  min-width: 100%;
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 ul{
@@ -32,6 +33,7 @@ ul{
   padding: 0px 60px;
   flex-wrap: wrap;
 }
+
 
 .footer-col h4{
   font-size: 18px;
