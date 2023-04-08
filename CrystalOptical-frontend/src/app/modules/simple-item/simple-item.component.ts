@@ -10,6 +10,7 @@ export class SimpleItemComponent implements OnInit {
 
   items: itemsInterface[] = [];
 
+
   constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
