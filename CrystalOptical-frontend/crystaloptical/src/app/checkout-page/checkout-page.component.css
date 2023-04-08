@@ -29,7 +29,6 @@
 .total-container {
   display: flex;
 
-  border: lightgrey solid 2px;
   border-radius: 7px;
   justify-content: center;
 
@@ -37,7 +36,6 @@
 
 .inside-total-container {
   flex-grow: 1;
-  border: red solid 1px;
 }
 
 .hr-styling {
@@ -46,20 +44,22 @@
   margin: 0;
 }
 
-.checkout-button {
+.checkout-button-div {
   justify-content: center;
-  border: purple solid 3px;
+  color: white;
+}
 
+.checkout-button {
+  color: white;
+  background-color: #d74148;
 }
 
 .container-box {
-  border: green solid 2px;
   padding-right: 30%;
   padding-left: 30%;
 }
 
 .inner-box {
-  border: green solid 2px;
 }
 
 
