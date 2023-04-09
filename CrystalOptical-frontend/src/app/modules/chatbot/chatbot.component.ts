@@ -155,6 +155,8 @@ export class ChatbotComponent implements OnInit {
         "Thanks so much for your help",  "Thank you very much for your assistance",
         "Thank you very much for your help",  "Thanks a lot for your assistance",
         "Thanks a lot for your help"], //13
+
+      ["Hello", "Hi", "hello", "hi", "HELLO", "HI"], //14
     ];
 
     const answers = [
@@ -172,8 +174,24 @@ export class ChatbotComponent implements OnInit {
       ["We offer a 1-year warranty on all our glasses."], //11
       ["You can cancel your order within 24 hours of placing it by contacting our customer service team.\n" +
       "If your order has already shipped, you'll need to wait until you receive it and then initiate a return or exchange if necessary."], //12
-      ["You're welcome!"],
-      // Add more responses here as needed
+      ["You're welcome!"], //13
+      [
+        "Hello! How can I assist you today?",
+        "Hi there! What can I help you with?",
+        "Hey! What brings you to our site?",
+        "Hi! Welcome to our online store. How may I assist you?",
+        "Hello there! How can I help you with your shopping today?",
+        "Hey there! Looking for anything specific?",
+        "Hi! Thanks for reaching out. How may I assist you?",
+        "Greetings! What can I help you find today?",
+        "Hi, how can I assist you with your shopping today?",
+        "Hello! What brings you to our online store today?",
+        "Hey! Looking for any specific product or information?",
+        "Hi there! How can I make your shopping experience better today?",
+        "Hello! Welcome to our online store. How may I help you today?",
+        "Hi, I'm here to help. What can I do for you today?",
+        "Hey there! Is there anything I can assist you with today?",
+      ], //14
     ];
 
     const alternatives = ["I'm sorry I do not have that information right now, please contact customer support for more details."];
