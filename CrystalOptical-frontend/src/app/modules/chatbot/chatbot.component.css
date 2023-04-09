@@ -210,6 +210,7 @@ select {
   grid-row-gap: 1rem;
   max-height: 300px;
   overflow-y: auto;
+  word-break: break-word;
 }
 
 ::-webkit-scrollbar {
@@ -226,7 +227,9 @@ select {
   background: var(--blue);
   color: var(--white);
   border-radius: .75rem 0 .75rem .75rem;
+  word-break: break-word;
 }
+
 
 .chatbox-message-item.received {
   background: red;
