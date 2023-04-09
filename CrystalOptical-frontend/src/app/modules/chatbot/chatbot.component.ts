@@ -161,7 +161,7 @@ export class ChatbotComponent implements OnInit {
         "Check my order status", "Check Order Status", "check order status",
         "Order status check", "Order Status Check"], //9
 
-      ["return my glasses",  "return glasses",  "glasses return",
+      ["return policy", "return my glasses",  "return glasses",  "glasses return",
         "returning glasses",  "return eyewear",  "eyewear return",  "return my eyewear",], //10
 
       ["warranty policy",  "warranty",  "product warranty"], //11
@@ -169,7 +169,7 @@ export class ChatbotComponent implements OnInit {
       [ "cancel my order",  "cancellation of order",  "cancel order",  "cancelling an order",
         "order cancellation",  "can I cancel my order",  "how to cancel an order",
         "how do I cancel my order",  "cancelling my order",  "order cancel",
-        "order cancelation",  "cancel my purchase",  "cancel my purchase order",
+        "order cancellation",  "cancel my purchase",  "cancel my purchase order",
         "can I cancel my purchase",  "how to cancel my purchase",
         "how do I cancel my purchase",  "cancelling my purchase",
         "purchase cancellation",  "can I cancel my purchase order"], //12
@@ -186,7 +186,7 @@ export class ChatbotComponent implements OnInit {
 
     const answers = [
       ["We currently only offer non-prescription glasses."], //0
-      ["We have frames in various colors, and sizes (XS, M, L, XL)."], //1
+      ["We have frames in colour red, and size medium."], //1
       ["We offer standard non-prescription lenses for all our glasses."], //2
       ["All of our glasses are anti-glare, scratch-resistant, and blue light coatings, with no extra cost."], //3
       ["We have a virtual try-on feature on our website that allows you to upload a photo of yourself and see how different glasses styles look on your face."], //4
