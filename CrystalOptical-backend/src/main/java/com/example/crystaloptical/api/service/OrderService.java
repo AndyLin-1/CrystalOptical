@@ -2,6 +2,7 @@ package com.example.crystaloptical.api.service;
 
 import com.example.crystaloptical.api.dto.data.ItemQuantityDto;
 import com.example.crystaloptical.api.dto.request.OrderRequest;
+import com.example.crystaloptical.api.dto.request.PaymentRequest;
 import com.example.crystaloptical.api.dto.response.OrderInfoResponse;
 import com.example.crystaloptical.model.ItemQuantity;
 import com.example.crystaloptical.model.Order;
@@ -22,13 +23,18 @@ public class OrderService {
     private final OrderRepository orderRepository;
     private final UserRepository userRepository;
 
-    public OrderService(OrderRepository orderRepository, UserRepository userRepository){
+    private final ItemService itemService;
+
+    public OrderService(OrderRepository orderRepository, UserRepository userRepository, ItemService itemService){
         this.orderRepository = orderRepository;
         this.userRepository = userRepository;
+        this.itemService = itemService;
     }
 
-    public ResponseEntity<OrderInfoResponse> sendOrder(OrderRequest orderRequest) {
-        //TODO need to edit item stock after ordering
+    public ResponseEntity<OrderInfoResponse> sendOrder(OrderRequest orderRequest) throws Exception {
+        if(!verifyPayment(orderRequest.getPaymentRequest())){
+            throw new Exception("Payment method is invalid");
+        }
         Order order = new Order();
         Users user = userRepository.findById(orderRequest.getUserId()).get();
         order.setUsers(user);
@@ -39,6 +45,7 @@ public class OrderService {
             i.setItemId(orderItem.getItemId());
             i.setQuantity(orderItem.getQuantity());
             itemQuantityArrayList.add(i);
+            itemService.editStock(orderItem.getItemId(), orderItem.getQuantity());
         }
 
         order.setItems(itemQuantityArrayList);
@@ -47,6 +54,11 @@ public class OrderService {
         orderRepository.save(order);
         OrderInfoResponse orderInfoResponse =  OrderInfoResponse.builder().orderId(order.getId()).userId(order.getUsers().getId()).order(order.getItems()).build();
         return ResponseEntity.ok(orderInfoResponse);
+    }
+
+    private boolean verifyPayment(PaymentRequest paymentRequest){
+        //TODO fill out a fake card
+        return true;
     }
 
     public ResponseEntity<OrderInfoResponse> getOrderInfo(Long id) throws Exception {

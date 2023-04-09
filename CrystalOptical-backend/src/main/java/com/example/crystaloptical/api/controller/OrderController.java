@@ -21,7 +21,8 @@ public class OrderController {
 
 
     @PostMapping("/order")
-    public ResponseEntity<OrderInfoResponse> sendOrder(@Valid @RequestBody OrderRequest orderRequest){
+    public ResponseEntity<OrderInfoResponse> sendOrder(@Valid @RequestBody OrderRequest orderRequest) throws Exception {
+
         return orderService.sendOrder(orderRequest);
     }
 

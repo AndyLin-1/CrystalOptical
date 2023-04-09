@@ -9,23 +9,18 @@ import javax.validation.constraints.NotEmpty;
 @Getter
 @Setter
 @Builder
-public class ItemAddRequest {
+public class PaymentRequest {
 
     @NotEmpty
     private String name;
 
-    private double price;
+    private int cardNumber;
 
+    private int expiryMonth;
+    private int expiryYear;
+
+    private int securityCode;
+    
     @NotEmpty
-    private String brand;
-
-    @NotEmpty
-    private String frameSize;
-
-    @NotEmpty
-    private String colour;
-
-    private int itemStock;
-
-    private String imagePath;
+    private String postal;
 }

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ApiService} from "../../services/api.service";
+import {itemsInterface} from "../../models/loginRequest.interface";
+import {StorageService} from "../../services/storage.service";
 
 @Component({
   selector: 'app-simple-item',
@@ -11,7 +13,8 @@ export class SimpleItemComponent implements OnInit {
   items: itemsInterface[] = [];
 
 
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService,
+              private storageService: StorageService) { }
 
   ngOnInit(): void {
     this.apiService.getAllItems().subscribe({next: (data: itemsInterface[]) => {
@@ -29,18 +32,12 @@ export class SimpleItemComponent implements OnInit {
 
   }
 
+  set() {
+    this.storageService.updateCart(this.items);
+  }
+
+  get(){
+    console.log(this.storageService.getCart());
+  }
 }
 
-export interface itemsInterface {
-  id: number;
-  name: string;
-  price: number;
-  brand: string;
-  frameSize: string;
-  colour: string;
-  rating: number;
-  ratingScore: number;
-  ratingNumber: number;
-  itemStock: number;
-  imagePath: string;
-}
