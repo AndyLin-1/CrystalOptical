@@ -223,7 +223,7 @@ export class ChatbotComponent implements OnInit {
 
     function output(input: string): string {
       let product;
-      let text = input.toLowerCase().replace(/[^\w\s\d]/gi, "");
+      let text = input.toLowerCase().replace(/[^\w\s\d?.]/gi, "");
       text = text
         .replace(/ a /g, " ")
         .replace(/whats/g, "what is")
@@ -262,9 +262,9 @@ export class ChatbotComponent implements OnInit {
 
     function writeMessage() {
       const today = new Date();
-      let text = textarea.value.trim().replace(/[^\w\s\d]/gi, "");
+      let text = textarea.value.trim().replace(/[^\w\s\d?.]/gi, "");
       let person = `
-      <div class="chatbox-message-item sent" style=" align-self: flex-end; background: blue; color: white; border-radius: .75rem 0 .75rem .25rem;">
+      <div class="chatbox-message-item sent" style=" align-self: flex-end; background: dodgerblue; color: white; border-radius: .75rem 0 .75rem .25rem; padding-left: 1rem">
         <div class="chatbox-message-item-text">
           ${text}
         </div>
