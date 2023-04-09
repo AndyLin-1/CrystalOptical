@@ -38,8 +38,7 @@ export class ChatbotComponent implements OnInit {
       chatboxMessage.classList.toggle('show');
     });
 
-
-  // DROPDOWN TOGGLE
+    // DROPDOWN TOGGLE
     const dropdownToggle = document.querySelector('.chatbox-message-dropdown-toggle') as HTMLElement;
     const dropdownMenu = document.querySelector('.chatbox-message-dropdown-menu') as HTMLElement;
 
@@ -51,6 +50,19 @@ export class ChatbotComponent implements OnInit {
       if (e.target && !(e.target as HTMLElement).matches('.chatbox-message-dropdown, .chatbox-message-dropdown *')) {
         dropdownMenu.classList.remove('show');
       }
+    });
+
+    // Reset the chat when the "Reset" button is clicked
+    const resetButton = document.querySelector('.chatbox-reset') as HTMLElement;
+    resetButton.addEventListener('click', () => {
+      const chatboxMessageWrapper = document.querySelector('.chatbox-message-content') as HTMLElement;
+      const chatboxNoMessage = document.querySelector('.chatbox-message-no-message') as HTMLElement;
+
+      // Clear the chat message content
+      chatboxMessageWrapper.innerHTML = '';
+
+      // Hide any messages
+      chatboxNoMessage.style.display = 'block';
     });
 
     // CHATBOX MESSAGE
@@ -109,7 +121,7 @@ export class ChatbotComponent implements OnInit {
         "see how they feel on me", "try it on for size",
         "try them on for size", "try these on for size", "try this on for size"], //4
 
-      ["shipping", "Shipping", "SHIP", "ship", "shipping options", "Shipping Options",
+      ["shipping options", "Shipping Options",
         "Shipping options", "shipping Options", "SHIPping options", "ShIPping Options",
         "SHIPping", "ShIPping", "shipPING", "ShIp", "ShIP"], //5
 
@@ -127,7 +139,7 @@ export class ChatbotComponent implements OnInit {
         "shipping duration",  "Shipping Duration",  "Shipping duration",
         "delivery duration",  "Delivery Duration",  "Delivery duration"], //7
 
-      [  "payment methods",  "Payment Methods",  "Payment methods",  "payment Methods",
+      [  "payment", "payment methods",  "Payment Methods",  "Payment methods",  "payment Methods",
         "accepted payment methods",  "Accepted Payment Methods",  "Accepted payment methods",
         "accepted Payment Methods",  "available payment methods",  "Available Payment Methods",
         "Available payment methods",  "available Payment Methods"], //8
@@ -141,7 +153,7 @@ export class ChatbotComponent implements OnInit {
 
       ["warranty policy",  "warranty",  "product warranty"], //11
 
-      [  "cancel my order",  "cancellation of order",  "cancel order",  "cancelling an order",
+      [ "cancel my order",  "cancellation of order",  "cancel order",  "cancelling an order",
         "order cancellation",  "can I cancel my order",  "how to cancel an order",
         "how do I cancel my order",  "cancelling my order",  "order cancel",
         "order cancelation",  "cancel my purchase",  "cancel my purchase order",
@@ -154,9 +166,9 @@ export class ChatbotComponent implements OnInit {
         "Thank you so much for your help",  "Thanks so much for your assistance",
         "Thanks so much for your help",  "Thank you very much for your assistance",
         "Thank you very much for your help",  "Thanks a lot for your assistance",
-        "Thanks a lot for your help"], //13
+        "Thanks a lot for your help", "thanks for your help"], //13
 
-      ["Hello", "Hi", "hello", "hi", "HELLO", "HI"], //14
+      ["Hello", "Hi", "hello", "hi", "HELLO", "HI", "Hey", "hey"], //14
     ];
 
     const answers = [
@@ -239,7 +251,7 @@ export class ChatbotComponent implements OnInit {
       const today = new Date();
       let text = textarea.value.trim().replace(/[^\w\s\d]/gi, "");
       let person = `
-      <div class="chatbox-message-item sent" style=" align-self: flex-end; background: blue; color: white; border-radius: .75rem 0 .75rem .75rem; padding-left: 90%">
+      <div class="chatbox-message-item sent" style=" align-self: flex-end; background: blue; color: white; border-radius: .75rem 0 .75rem .25rem;">
         <div class="chatbox-message-item-text">
           ${text}
         </div>
@@ -259,7 +271,7 @@ export class ChatbotComponent implements OnInit {
     function autoReply(input: string) {
       const today = new Date();
       let text = output(input);
-      let bot = `<div class="chatbox-message-item received" style=" align-self: flex-start; background: antiquewhite; border-radius: 0 .75rem .75rem .75rem; padding-right: 90%">
+      let bot = `<div class="chatbox-message-item received" style=" align-self: flex-start; background: antiquewhite; border-radius: 0 .75rem .75rem .25rem;">
         <div class="chatbox-message-item-text">
           ${text}
         </div>

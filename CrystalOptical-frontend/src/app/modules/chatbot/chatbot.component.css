@@ -128,7 +128,7 @@ select {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: var(--white);
+  background: whitesmoke;
   padding: .75rem 1.5rem;
 }
 .chatbox-message-profile {
@@ -153,6 +153,12 @@ select {
 .chatbox-message-dropdown {
   position: relative;
 }
+
+.chatbox-reset {
+  border-color: whitesmoke;
+  margin-left: 2rem;
+}
+
 .chatbox-message-dropdown-toggle {
   display: flex;
   justify-content: center;
@@ -195,6 +201,7 @@ select {
 .chatbox-message-dropdown-menu a:hover {
   background: var(--grey);
 }
+
 .chatbox-message-content {
   background: var(--grey);
   padding: 1.5rem;
@@ -204,10 +211,16 @@ select {
   max-height: 300px;
   overflow-y: auto;
 }
+
+::-webkit-scrollbar {
+  width: 0px;
+}
+
 .chatbox-message-item {
   width: 90%;
   padding: 1rem;
 }
+
 .chatbox-message-item.sent {
   align-self: flex-end;
   background: var(--blue);
@@ -228,7 +241,7 @@ select {
   display: inline-block;
 }
 .chatbox-message-bottom {
-  background: var(--white);
+  background: navajowhite;
   padding: .75rem 1.5rem;
 }
 .chatbox-message-form {
@@ -236,7 +249,8 @@ select {
   align-items: center;
   background: var(--grey);
   border-radius: .5rem;
-  padding: .5rem 1.25rem;
+  padding: .5rem 0 .5rem 1.25rem;
+  width: 100%;
 }
 .chatbox-message-input {
   background: transparent;
@@ -244,6 +258,7 @@ select {
   border: none;
   resize: none;
   scrollbar-width: none;
+  width: 100%;
 }
 .chatbox-message-input::-webkit-scrollbar {
   display: none;
