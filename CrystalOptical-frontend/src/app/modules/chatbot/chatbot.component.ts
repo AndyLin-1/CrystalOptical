@@ -215,7 +215,7 @@ export class ChatbotComponent implements OnInit {
         .replace(/ a /g, " ")
         .replace(/whats/g, "what is")
         .replace(/please /g, "")
-        .replace(/ please/g, "");
+        .replace(/ please/g, "")
       if (compare(utterances, answers, text)) {
         product = compare(utterances, answers, text);
       }
