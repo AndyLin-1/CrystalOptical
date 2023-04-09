@@ -52,7 +52,7 @@ export class ChatbotComponent implements OnInit {
       }
     });
 
-// CHATBOX MESSAGE
+    // CHATBOX MESSAGE
     const chatboxMessageWrapper = document.querySelector('.chatbox-message-content') as HTMLElement;
     const chatboxNoMessage = document.querySelector('.chatbox-message-no-message') as HTMLElement;
 
@@ -65,8 +65,6 @@ export class ChatbotComponent implements OnInit {
       }
     });
 
-
-
     function addZero(num: number): string {
       return num < 10 ? '0'+num : num.toString();
     }
@@ -74,13 +72,13 @@ export class ChatbotComponent implements OnInit {
     function writeMessage() {
       const today = new Date();
       let message = `
-    <div class="chatbox-message-item sent">
-      <span class="chatbox-message-item-text">
-        ${textarea.value.trim().replace(/\n/g, '<br>\n')}
-      </span>
-      <span class="chatbox-message-item-time">${addZero(today.getHours())}:${addZero(today.getMinutes())}</span>
-    </div>
-  `;
+          <div class="chatbox-message-item sent" style=" align-self: flex-end; background: blue; color: white; border-radius: .75rem 0 .75rem .75rem; padding-left: 90%">
+            <div class="chatbox-message-item-text">
+              ${textarea.value.trim().replace(/\n/g, '<br>\n')}
+            </div>
+            <div class="chatbox-message-item-time">${addZero(today.getHours())}:${addZero(today.getMinutes())}</div>
+          </div>
+        `;
       chatboxMessageWrapper.insertAdjacentHTML('beforeend', message);
       chatboxForm.style.alignItems = 'center';
       textarea.rows = 1;
@@ -93,13 +91,13 @@ export class ChatbotComponent implements OnInit {
     function autoReply() {
       const today = new Date();
       let message = `
-    <div class="chatbox-message-item received">
-      <span class="chatbox-message-item-text">
-        Thank you for your awesome support!
-      </span>
-      <span class="chatbox-message-item-time">${addZero(today.getHours())}:${addZero(today.getMinutes())}</span>
-    </div>
-  `;
+        <div class="chatbox-message-item received" style="background: antiquewhite; border-radius: 0 .75rem .75rem .75rem; box-shadow: .25rem .25rem 1.5rem rgba(0, 0, 0, .05);">
+          <div class="chatbox-message-item-text">
+            Thank you for your awesome support!
+          </div>
+          <div class="chatbox-message-item-time">${addZero(today.getHours())}:${addZero(today.getMinutes())}</div>
+        </div>
+      `;
       chatboxMessageWrapper.insertAdjacentHTML('beforeend', message);
       scrollBottom();
     }

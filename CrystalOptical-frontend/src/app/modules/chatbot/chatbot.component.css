@@ -98,7 +98,7 @@ select {
   color: white;
   border-radius: 50%;
   text-align: center;
-  line-height: 70px;
+  line-height: 60px;
   font-size: 30px;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -107,6 +107,7 @@ select {
 .chatbox-toggle:active {
   transform: scale(.9);
 }
+
 .chatbox-message-wrapper {
   position: absolute;
   bottom: calc(100% + 1rem);
@@ -118,6 +119,7 @@ select {
   transform: scale(0);
   transform-origin: bottom right;
   transition: .2s;
+  background-color: #FFF;
 }
 .chatbox-message-wrapper.show {
   transform: scale(1);
@@ -212,11 +214,13 @@ select {
   color: var(--white);
   border-radius: .75rem 0 .75rem .75rem;
 }
+
 .chatbox-message-item.received {
   background: var(--white);
   border-radius: 0 .75rem .75rem .75rem;
   box-shadow: .25rem .25rem 1.5rem rgba(0, 0, 0, .05);
 }
+
 .chatbox-message-item-time {
   float: right;
   font-size: .75rem;
@@ -244,6 +248,17 @@ select {
 .chatbox-message-input::-webkit-scrollbar {
   display: none;
 }
+
+.chatbox-reset-button{
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 1.25rem;
+  color: var(--grey-d-3);
+  margin-right: .5rem;
+}
+
 .chatbox-message-submit {
   font-size: 1.25rem;
   color: var(--blue);
