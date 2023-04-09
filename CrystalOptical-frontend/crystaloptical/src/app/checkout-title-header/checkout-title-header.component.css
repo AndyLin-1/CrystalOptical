@@ -1,0 +1,17 @@
+.header-container {
+  border: lightgrey solid 2px;
+  border-radius: 7px;
+  display: flex;
+  margin: 10% 10% 2%;
+
+}
+
+.header {
+  flex-grow: 1; /* default 0 */
+}
+
+h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

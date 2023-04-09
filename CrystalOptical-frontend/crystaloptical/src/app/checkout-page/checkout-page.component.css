@@ -1,0 +1,65 @@
+.button-container {
+  display: flex;
+/*  border: black solid 2px; */
+  padding-right: 10%;
+  padding-left: 10%;
+
+}
+
+.button-container div {
+  flex-grow: 1;
+/*  border: black solid 2px; */
+}
+
+.align-left {
+  text-align: left;
+}
+
+.left-button, .right-button {
+  border: black solid 1px;
+  width: 75%;
+  height: 150%;
+}
+
+.align-right {
+  text-align: right;
+
+}
+
+.total-container {
+  display: flex;
+
+  border-radius: 7px;
+  justify-content: center;
+
+}
+
+.inside-total-container {
+  flex-grow: 1;
+}
+
+.hr-styling {
+}
+.reduce-p-margin {
+  margin: 0;
+}
+
+.checkout-button-div {
+  justify-content: center;
+  color: white;
+}
+
+.checkout-button {
+  color: white;
+  background-color: #d74148;
+}
+
+.container-box {
+  padding-right: 30%;
+  padding-left: 30%;
+}
+
+.inner-box {
+}
+
+

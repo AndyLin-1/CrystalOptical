@@ -1,0 +1,31 @@
+<div *ngIf="items.length > 0; else noItems">
+  <div class="item-container" *ngFor="let item of items; let i = index">
+
+    <div class="thumbnail-title">
+      <img src="{{ item.imagePath }}">
+      <p class="item-name">{{ item.name }}</p>
+    </div>
+    <div><p class="item-price">{{ item.price }}</p></div>
+    <div class="quantity">
+      <form class="example-form">
+        <mat-form-field class="example-full-width" style="width: 3em">
+          <input type="number" (change)="valueChanged()"  id="{{ i }}" style="width: 3em" matInput onKeyDown="return false" min=1 max=5 value= "{{ item.quantity }}">
+        </mat-form-field>
+      </form>
+
+
+
+    </div>
+    <div><p class="item-subtotal">${{ (item.price * item.quantity).toFixed(2) }}</p></div>
+  </div>
+</div>
+
+<ng-template #noItems><h1 class="error-no-items"> Please add items to your cart first </h1></ng-template>
+
+
+
+<!-- image thumbnail + glasses_title
+  price
+  quantity + arrow picker
+  subtotal (price * quantity)
+-->

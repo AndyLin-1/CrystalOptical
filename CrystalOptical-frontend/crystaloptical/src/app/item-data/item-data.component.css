@@ -1,0 +1,166 @@
+div {
+}
+
+.container {
+  display: flex;
+
+}
+
+
+
+.data-box {
+  width: 50%;
+  /* Space between image and data box */
+  margin-right: 10%;
+  margin-left: 10%;
+  flex-grow: 2;
+}
+
+.increment-counter {
+  display: block;
+  margin: auto;
+  text-align: center;
+}
+
+.image-box {
+  margin: 10%;
+  width: 200px;
+  height: fit-content;
+  align-self: center;
+  flex-grow: 4;
+
+
+
+}
+
+.sizes {
+  display: flex;
+}
+
+.colors {
+  display: flex;
+  border: none;
+}
+
+.glasses {
+  max-width: 100%;
+  height: auto;
+}
+
+.options-2 {
+  display: flex;
+}
+
+.options-2 div {
+  flex-grow: 1; /* default 0 */
+
+}
+
+.sizes mat-button-toggle {
+  margin-right: 10px;
+  border: black solid 1px;
+  border-radius: 10px;
+  width: 40px;
+  height: auto;
+}
+
+.colors mat-button-toggle {
+  margin-right: 10px;
+  width: 10%;
+  height: 30%;
+  margin-top: 10%;
+}
+
+.sizes .mat-button-toggle-checked {
+  background-color: #d74148;
+  color: #fafafa;
+}
+
+.colors .mat-button-toggle-checked {
+  border: white solid 2px;
+  border-left-width: 2px;
+  outline: black solid 2px;
+}
+
+.colors .mat-button-toggle-group {
+  padding-left: 2%;
+  border: none;
+}
+
+mat-button-toggle-group {
+  border:none;
+}
+
+.buy-now-button {
+  background-color: #d74148;
+  color: white;
+  margin:0 auto;
+  display:block;
+}
+
+.shopping-cart-icon {
+  margin:0 auto;
+  display:block;
+  border: black solid 1px;
+}
+
+.increment-counter {
+  width: fit-content;
+  display: flex;
+}
+
+.increment-counter-buttons {
+  font-size: 175%;
+  font-family: Arial;
+  border: black solid 1px;
+}
+
+.related-items-container {
+  margin-left: 100px;
+}
+
+.customer-options-container-1 {
+  display: flex;
+
+}
+
+.customer-options-container-2 {
+  display: flex;
+
+
+}
+
+.table-container-1 {
+
+  display: inline-block;
+
+}
+
+.table-container-2 {
+  width: auto;
+}
+
+.virtual-try-on-container {
+  display: flex;
+}
+
+.virtual-try-on-container div {
+  flex-grow: 1;
+  text-align: center;
+
+
+}
+
+.vto-box-1 {
+  background-color: #dbd7d8;
+  margin-left: 15%;
+}
+
+.vto-box-2 {
+  background-color: #dbd7d8;
+  margin-right: 10%;
+}
+
+.camera-icon {
+  background-color: #ffac34;
+}

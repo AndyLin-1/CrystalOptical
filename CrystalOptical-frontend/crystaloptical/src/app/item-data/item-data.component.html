@@ -1,0 +1,132 @@
+<div class="container">
+  <div class="image-box">
+    <img src="{{ imageList[0].imagePath }}" width="250" height="200" class="glasses">
+  </div>
+
+
+  <div class="data-box">
+    <div class="description">
+      <h1>{{ imageList[0].brand + ' ' + imageList[0].name }}</h1>
+      <h2>${{ imageList[0].price }}</h2>
+      <p> {{ description }}</p>
+      <hr>
+      <!--<img src="assets/singular-item/test_glasses.png" class="glasses">-->
+    </div>
+
+    <div class="options-1">
+      <div class="colors">
+        <p style="margin-right:5%;">Colors: </p>
+        <mat-button-toggle-group name="favoriteColor" aria-label="Favorite Color">
+          <mat-button-toggle style="background-color: #f7dae5;" value="color1" >  </mat-button-toggle>
+          <mat-button-toggle style="background-color: #fff2e1;" value="color2">  </mat-button-toggle>
+          <mat-button-toggle style="background-color: #c3e2e6;" value="color3">  </mat-button-toggle>
+          <mat-button-toggle style="background-color: #d0cce0;" value="color4">  </mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+      <br />
+      <div class="sizes">
+        <p style="margin-right: 5%;">Size: </p>
+        <mat-button-toggle-group name="favoriteColor" aria-label="Favorite Color">
+          <mat-button-toggle value="XS">XS</mat-button-toggle>
+          <p></p>
+          <mat-button-toggle value="S">S</mat-button-toggle>
+          <p></p>
+          <mat-button-toggle value="M">M</mat-button-toggle>
+          <p></p>
+          <mat-button-toggle value="L">L</mat-button-toggle>
+          <p></p>
+          <mat-button-toggle value="XL">XL</mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+    </div>
+    <br />
+    <div class="options-2">
+      <div class="increment-counter">
+        <button mat-button class="increment-counter-buttons" (click)="decrementQuantity()">-</button>
+        <input disabled
+               style="text-align: center; background-color: white; border: black solid 1px;"
+               size="1"
+               type="text"
+               class="input"
+               placeholder="Enter your task"
+               [(ngModel)]="quantity_value">
+        <button mat-button class="increment-counter-buttons"
+                (click)="incrementQuantity()"
+                style="background-color: #d74148;
+                      color: white;
+                      ">+
+        </button>
+        <button mat-button class="buy-now-button">Buy Now</button>
+        <button mat-button class="shopping-cart-icon"><img src="{{ imageList[1].imagePath }}"></button>
+        <!--<increment-input></increment-input>-->
+      </div>
+
+
+      <div>
+
+      </div>
+      <div>
+
+      </div>
+    </div>
+    <br/>
+
+    <div class="mega-div-container">
+      <div class="customer-options-container-1">
+        <div class="table-container-1">
+          <img src="{{ imageList[2].imagePath }}" width="100">
+        </div>
+        <div class="table-container-2">
+          <h3>Free Delivery!</h3>
+          <p><a href="">Enter your postal code for Delivery Availability</a></p>
+
+        </div>
+      </div>
+
+      <div class="customer-options-container-2">
+        <div class="table-container-1">
+          <img src="{{ imageList[3].imagePath }}" width="100">
+        </div>
+        <div class="table-container-2">
+          <h3>Book An Appointment</h3>
+
+          <p>Open 7 Days a week</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<br />
+<br />
+<div class="virtual-try-on-container">
+  <div class="vto-box-1">
+  <img src="{{ imageList[4].imagePath }}">
+  </div>
+  <div class="vto-box-2">
+    <br/>
+    <br/>
+    <br/>
+    <h1>Virtual Try On</h1>
+    <br/>
+    <button mat-button class="camera-icon"><img src="{{ imageList[5].imagePath }}" width="10%"></button>
+  </div>
+
+
+
+
+</div>
+
+
+
+
+<div class="related-items-container">
+  <!-- ngFor loop to print a bunch of related items -->
+  <br />
+  <h1>Related Items</h1>
+  <related-item></related-item>
+
+</div>
