@@ -1,0 +1,12 @@
+div {
+  float: left;
+  margin: 10px;
+}
+
+
+div.search {
+  clear: left;
+}
+div.chips {
+  margin: 10px;
+}
