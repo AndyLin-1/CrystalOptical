@@ -1,13 +1,12 @@
 <div class="container">
   <div class="image-box">
-    <img src="{{ imageList[0].imagePath }}" width="250" height="200" class="glasses">
+    <img src="{{ item.imagePath }}" width="250" height="200" class="glasses">
   </div>
-
 
   <div class="data-box">
     <div class="description">
-      <h1>{{ imageList[0].brand + ' ' + imageList[0].name }}</h1>
-      <h2>${{ imageList[0].price }}</h2>
+      <h1>{{ item.brand + ' ' + item.name }}</h1>
+      <h2>${{ item.price }}</h2>
       <p> {{ description }}</p>
       <hr>
       <!--<img src="assets/singular-item/test_glasses.png" class="glasses">-->
@@ -17,26 +16,14 @@
       <div class="colors">
         <p style="margin-right:5%;">Colors: </p>
         <mat-button-toggle-group name="favoriteColor" aria-label="Favorite Color">
-          <mat-button-toggle style="background-color: #f7dae5;" value="color1" >  </mat-button-toggle>
-          <mat-button-toggle style="background-color: #fff2e1;" value="color2">  </mat-button-toggle>
-          <mat-button-toggle style="background-color: #c3e2e6;" value="color3">  </mat-button-toggle>
-          <mat-button-toggle style="background-color: #d0cce0;" value="color4">  </mat-button-toggle>
+          <mat-button-toggle style="background-color: {{item.colour}}; width: 15px; margin-top: 18px;" value="color1" > </mat-button-toggle>
         </mat-button-toggle-group>
       </div>
       <br />
+
       <div class="sizes">
         <p style="margin-right: 5%;">Size: </p>
-        <mat-button-toggle-group name="favoriteColor" aria-label="Favorite Color">
-          <mat-button-toggle value="XS">XS</mat-button-toggle>
-          <p></p>
-          <mat-button-toggle value="S">S</mat-button-toggle>
-          <p></p>
-          <mat-button-toggle value="M">M</mat-button-toggle>
-          <p></p>
-          <mat-button-toggle value="L">L</mat-button-toggle>
-          <p></p>
-          <mat-button-toggle value="XL">XL</mat-button-toggle>
-        </mat-button-toggle-group>
+        <p>{{item.frameSize}}</p>
       </div>
     </div>
     <br />
@@ -56,8 +43,8 @@
                       color: white;
                       ">+
         </button>
-        <button mat-button class="buy-now-button">Buy Now</button>
-        <button mat-button class="shopping-cart-icon"><img src="{{ imageList[1].imagePath }}"></button>
+        <button mat-button class="buy-now-button" (click)="buy()">Buy Now</button>
+        <button mat-button class="shopping-cart-icon"><img src="./assets/site/cart.png"></button>
         <!--<increment-input></increment-input>-->
       </div>
 
@@ -66,7 +53,6 @@
 
       </div>
       <div>
-
       </div>
     </div>
     <br/>
@@ -74,7 +60,7 @@
     <div class="mega-div-container">
       <div class="customer-options-container-1">
         <div class="table-container-1">
-          <img src="{{ imageList[2].imagePath }}" width="100">
+          <img src="./assets/site/fast-truck.png" width="100">
         </div>
         <div class="table-container-2">
           <h3>Free Delivery!</h3>
@@ -85,7 +71,7 @@
 
       <div class="customer-options-container-2">
         <div class="table-container-1">
-          <img src="{{ imageList[3].imagePath }}" width="100">
+          <img src="./assets/site/calendar.png" width="100">
         </div>
         <div class="table-container-2">
           <h3>Book An Appointment</h3>
@@ -96,15 +82,11 @@
     </div>
   </div>
 </div>
-
-
-
-
 <br />
 <br />
 <div class="virtual-try-on-container">
   <div class="vto-box-1">
-  <img src="{{ imageList[4].imagePath }}">
+  <img src="./assets/site/person.png">
   </div>
   <div class="vto-box-2">
     <br/>
@@ -112,21 +94,17 @@
     <br/>
     <h1>Virtual Try On</h1>
     <br/>
-    <button mat-button class="camera-icon"><img src="{{ imageList[5].imagePath }}" width="10%"></button>
+    <button mat-button class="camera-icon"><img src="./assets/site/camera.png" width="10%"></button>
   </div>
-
-
-
-
 </div>
 
 
 
 
-<div class="related-items-container">
-  <!-- ngFor loop to print a bunch of related items -->
-  <br />
-  <h1>Related Items</h1>
-  <related-item></related-item>
+<!--<div class="related-items-container">-->
+<!--  &lt;!&ndash; ngFor loop to print a bunch of related items &ndash;&gt;-->
+<!--  <br />-->
+<!--  <h1>Related Items</h1>-->
+<!--  <related-item></related-item>-->
 
-</div>
+<!--</div>-->

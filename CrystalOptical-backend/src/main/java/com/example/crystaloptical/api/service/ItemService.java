@@ -30,6 +30,12 @@ public class ItemService {
     }
 
 
+    public ResponseEntity<Item> getItem(Long id) throws Exception {
+        if(itemRepository.findById(id).isEmpty()){
+            throw new Exception("Item Does Not Exist");
+        }
+        return ResponseEntity.ok().body(itemRepository.findById(id).get());
+    }
 
     public ResponseEntity<Integer> getStock(Long id) throws Exception {
         if(itemRepository.findById(id).isEmpty()){

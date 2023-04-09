@@ -1,3 +1,21 @@
+.header-container {
+  border: lightgrey solid 2px;
+  border-radius: 7px;
+  display: flex;
+  margin: 10% 10% 2%;
+
+}
+.header {
+  flex-grow: 1; /* default 0 */
+}
+
+h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
 .button-container {
   display: flex;
 /*  border: black solid 2px; */
@@ -62,4 +80,42 @@
 .inner-box {
 }
 
+
+
+.item-container {
+  border: lightgrey solid 2px;
+  border-radius: 7px;
+  display: flex;
+  margin: 0% 10% 5%;
+}
+
+.item-container div {
+
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.thumbnail-title {
+  display: flex;
+}
+
+img {
+  width: 50px;
+  height: auto;
+}
+
+::ng-deep .mat-form-field-underline {
+  display: none;
+}
+
+input {
+  border: lightgrey solid 1px;
+  border-radius: 3px;
+}
+
+.error-no-items {
+  text-align: center;
+}
 

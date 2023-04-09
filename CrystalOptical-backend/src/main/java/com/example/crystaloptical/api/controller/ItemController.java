@@ -23,6 +23,11 @@ public class ItemController {
         return itemService.getStock(id);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Item> getItem(@PathVariable Long id) throws Exception {
+        return itemService.getItem(id);
+    }
+
     @GetMapping("/list")
     public ResponseEntity<List<Item>> getAllItems() {
         return itemService.getAllItems();

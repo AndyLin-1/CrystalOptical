@@ -1,0 +1,15 @@
+<nav class="navbar">
+  <ul>
+    <li class="nav-logo"><img src="./assets/site/logo.png" alt="Crystal Optical logo" class="logo"></li>
+    <li class="nav-toggle">
+      <i class="fas fa-bars"></i>
+    </li>
+    <li class="nav-links"><a href="#">Catalogue</a></li>
+    <li class="nav-links"><a href="#">Favorite</a></li>
+    <li class="nav-links"><a href="#">Support</a></li>
+    <li class="nav-links"><img class="nav-icon" src="./assets/site/profile.png" alt="profile icon"></li>
+    <p>{{this.getName()}}</p>
+    <li class="nav-links"><img class="nav-icon" src="./assets/site/cart.png" alt="cart icon" [routerLinkActive]="['active']" [routerLink]="['/checkout']"></li>
+    <li>{{this.update()}}</li>
+  </ul>
+</nav>

@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import {LoginRequestInterface} from "../models/items.interface";
-import {itemsInterface} from "../models/loginRequest.interface";
+import {LoginRequestInterface} from "../models/loginRequest.interface";
+import {itemsQuantityInterface} from "../models/itemQuantity.interface";
 
 const LOGGED_IN_COOKIE = "logged_in";
 const CART = "cart";
+const NAME = "name";
 
 @Injectable({
   providedIn: 'root'
@@ -13,23 +14,46 @@ export class StorageService {
   constructor() { }
 
   userLoggedIn(): boolean {
-    return this.getCookie(LOGGED_IN_COOKIE) == "true";
+    return this.getCookie(LOGGED_IN_COOKIE) != null;
   }
 
-  getCart() : itemsInterface[] {
-    return JSON.parse(<string>this.getCookie(CART));
+  getCart() : itemsQuantityInterface[] {
+    let cart = <string>this.getCookie(CART);
+    if(cart != null){
+      return JSON.parse(cart);
+    }
+    return [];
   }
 
-  updateCart(items : itemsInterface[]) {
+  updateCart(items : itemsQuantityInterface[]) {
     this.setCookie(CART, JSON.stringify(items), 21600);
   }
 
-  login(request : LoginRequestInterface, token: string): void
+  getCartQuantity() : number{
+    let cart = <string>this.getCookie(CART);
+    let list;
+    let total = 0;
+    if (cart != null) {
+      list = <itemsQuantityInterface[]>JSON.parse(cart);
+      list.forEach(function(data){
+        total = total + data.quantity;
+      })
+    }
+    return total;
+  }
+
+  getName() : string {
+    return <string>this.getCookie(NAME);
+  }
+
+  login(name: string, token: string): void
   {
+    this.setCookie(NAME, name, 1800);
     this.setCookie(LOGGED_IN_COOKIE, token, 1800);
   }
 
   async logout() {
+    this.setCookie(NAME, "false", 0);
     this.setCookie(LOGGED_IN_COOKIE, "false", 0);
   }
 

@@ -1,7 +1,7 @@
 import {Component, NgModule, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ApiService} from "../../services/api.service";
-import {LoginRequestInterface} from "../../models/items.interface";
+import {LoginRequestInterface} from "../../models/loginRequest.interface";
 import {UserSessionInterface} from "../../models/userSession.interface";
 import {StorageService} from "../../services/storage.service";
 
@@ -30,7 +30,7 @@ export class SimpleInterfaceComponent implements OnInit{
     };
     this.apiService.login(request).subscribe({next : (data: UserSessionInterface) => {
       this.message = "Success";
-      this.storageService.login(request, data.jwtToken);
+      this.storageService.login(data.name, data.jwtToken);
       },
         error: (error) => {
           this.message = "Wrong Password/Unregistered"

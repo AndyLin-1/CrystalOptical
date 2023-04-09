@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {ApiService} from "../../services/api.service";
-import {itemsInterface} from "../../models/loginRequest.interface";
+import {itemsInterface} from "../../models/items.interface";
 import {StorageService} from "../../services/storage.service";
+import {itemsQuantityInterface} from "../../models/itemQuantity.interface";
 
 @Component({
   selector: 'app-simple-item',
@@ -33,7 +34,16 @@ export class SimpleItemComponent implements OnInit {
   }
 
   set() {
-    this.storageService.updateCart(this.items);
+    let i : itemsQuantityInterface[] = [];
+    this.items.forEach(function(data){
+      let add: itemsQuantityInterface = {
+        item: data,
+        quantity: 2
+      }
+      i.push(add);
+    });
+    this.storageService.updateCart(i);
+
   }
 
   get(){
