@@ -51,7 +51,7 @@ public class JwtTokenService implements UserDetailsService {
         String newToken = jwtUtil.generateToken(userDetails);
         Users user = userRepository.findByEmail(email).get();
 
-        return UserLoginResponse.builder().user(user).jwtToken(newToken).build();
+        return UserLoginResponse.builder().jwtToken(newToken).build();
     }
 
     public Optional<Authentication> authenticateUser(UserAuthRequest userAuthRequest) throws Exception {

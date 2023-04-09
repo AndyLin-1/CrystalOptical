@@ -2,6 +2,7 @@
   <li *ngFor="let item of items">
     id: {{item.id}}
     <br>
+
     name: {{item.name}}
     <br>
     price: {{item.price}}
@@ -25,3 +26,6 @@
   </li>
 </ul>
 <br>
+
+<button (click)="set()">set</button>
+<button (click)="get()">get</button>

@@ -20,4 +20,6 @@ public class OrderRequest {
     //Order
     private List<ItemQuantityDto> order;
 
+    private PaymentRequest paymentRequest;
+
 }

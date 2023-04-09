@@ -1,6 +1,9 @@
 import {Component, NgModule, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ApiService} from "../../services/api.service";
+import {LoginRequestInterface} from "../../models/items.interface";
+import {UserSessionInterface} from "../../models/userSession.interface";
+import {StorageService} from "../../services/storage.service";
 
 @Component({
   selector: 'app-simple-interface',
@@ -13,7 +16,8 @@ export class SimpleInterfaceComponent implements OnInit{
 
   constructor(
     private fb: FormBuilder,
-    private apiService: ApiService) {}
+    private apiService: ApiService,
+    private storageService: StorageService) {}
 
   ngOnInit(): void {
     this.initForm();
@@ -24,8 +28,9 @@ export class SimpleInterfaceComponent implements OnInit{
       email: this.form.value.email,
       password: this.form.value.password,
     };
-    this.apiService.login(request).subscribe({next : (data: string) => {
+    this.apiService.login(request).subscribe({next : (data: UserSessionInterface) => {
       this.message = "Success";
+      this.storageService.login(request, data.jwtToken);
       },
         error: (error) => {
           this.message = "Wrong Password/Unregistered"
@@ -43,7 +48,3 @@ export class SimpleInterfaceComponent implements OnInit{
   }
 }
 
-export interface LoginRequestInterface {
-  email: string;
-  password: string;
-}

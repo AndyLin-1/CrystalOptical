@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ApiService} from "../../services/api.service";
-import {LoginRequestInterface} from "../simple-interface/simple-interface.component";
+import {RegisterRequestInterface} from "../../models/registerRequest.interface";
+import {StorageService} from "../../services/storage.service";
 
 @Component({
   selector: 'app-simple-register',
@@ -10,11 +11,12 @@ import {LoginRequestInterface} from "../simple-interface/simple-interface.compon
 })
 export class SimpleRegisterComponent implements OnInit {
   form!: FormGroup;
-  message: string = "";
+  message: String = "";
 
   constructor(
     private fb: FormBuilder,
-    private apiService: ApiService) {}
+    private apiService: ApiService,
+    private storageService: StorageService) {}
 
   ngOnInit(): void {
     this.initForm();
@@ -27,8 +29,17 @@ export class SimpleRegisterComponent implements OnInit {
       email: this.form.value.email,
       password: this.form.value.password,
     }
-    this.apiService.register(request);
-    this.message = "Success";
+    console.log("request=" + request.firstName + request.lastName + request.email + request.password);
+    this.apiService.register(request).subscribe({next : (data: String) => {
+        this.message = data;
+      },
+      error: (error) => {
+        this.message = "error";
+        console.log(error);
+      },
+    },);
+
+    // this.message = "Success";
 
     // this.apiService.login(request).subscribe({next : (data: string) => {
     //     this.message = "Success";
@@ -38,6 +49,20 @@ export class SimpleRegisterComponent implements OnInit {
     //     console.log(error);
     //   },
     // },);
+  }
+
+  test() {
+    // this.apiService.test().subscribe({next: (data) => {
+    //   console.log(data);
+    //   },
+    //   error: (error) => {
+    //     this.message = "error";
+    //     console.log(error);
+    //   },
+    // },);
+    this.storageService.logout().then(r => {
+      console.log("logged out");
+    });
   }
 
 
@@ -51,10 +76,4 @@ export class SimpleRegisterComponent implements OnInit {
   }
 }
 
-export interface RegisterRequestInterface {
-  firstName: string;
-  lastName: string;
-  email: string;
-  password: string;
-}
 
