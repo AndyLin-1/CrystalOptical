@@ -79,6 +79,19 @@ export class ChatbotComponent implements OnInit {
       }
     });
 
+    chatboxForm.addEventListener('keydown', function(event) {
+      if (event.keyCode === 13 && !event.shiftKey) {
+        event.preventDefault();
+        if (isValid(textarea.value)) {
+          writeMessage();
+          setTimeout(autoReply, 1000);
+        }
+        textarea.value = '';
+        textarea.rows = 1;
+      }
+    });
+
+
     function addZero(num: number): string {
       return num < 10 ? '0'+num : num.toString();
     }
