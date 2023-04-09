@@ -195,7 +195,7 @@ export class ChatbotComponent implements OnInit {
       ["We offer free shipping to any location within Canada, and it takes 5-7 business days to arrive."], //7
       ["We currently only accept credit card payments, such as VISA and MasterCard"], //8
       ["You can check your order status by logging into your account or by contacting customer service."], //9
-      ["We offer a 30-day return policy, and you can return your glasses for a full refund."], //10
+      ["We offer a 30-day return policy, where you can return your glasses for a full refund."], //10
       ["We offer a 1-year warranty on all our glasses."], //11
       ["You can cancel your order within 24 hours of placing it by contacting our customer service team.\n" +
       "If your order has already shipped, you'll need to wait until you receive it and then initiate a return or exchange if necessary."], //12
