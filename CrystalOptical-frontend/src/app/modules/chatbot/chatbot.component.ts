@@ -63,33 +63,13 @@ export class ChatbotComponent implements OnInit {
 
       if(isValid(textarea.value)) {
         writeMessage();
-        setTimeout(autoReply, 1000);
+        setTimeout(autoReply, 1000)
       }
     });
 
     function addZero(num: number): string {
       return num < 10 ? '0'+num : num.toString();
     }
-
-    /**
-    function writeMessage() {
-      const today = new Date();
-      let message = `
-          <div class="chatbox-message-item sent" style=" align-self: flex-end; background: blue; color: white; border-radius: .75rem 0 .75rem .75rem; padding-left: 90%">
-            <div class="chatbox-message-item-text">
-              ${textarea.value.trim().replace(/\n/g, '<br>\n')}
-            </div>
-            <div class="chatbox-message-item-time">${addZero(today.getHours())}:${addZero(today.getMinutes())}</div>
-          </div>
-        `;
-      chatboxMessageWrapper.insertAdjacentHTML('beforeend', message);
-      chatboxForm.style.alignItems = 'center';
-      textarea.rows = 1;
-      textarea.focus();
-      textarea.value = '';
-      chatboxNoMessage.style.display = 'none';
-      scrollBottom();
-    }*/
 
     const utterances = [
       ["how are you", "how is life", "how are things"], //0
@@ -101,30 +81,68 @@ export class ChatbotComponent implements OnInit {
     ];
 
     const answers = [
-      ["Fine... how are you?",    "Pretty well, how are you?",    "Fantastic, how are you?"], //0
-      [    "Hello!",    "Hi!",    "Hey!",    "Hi there!",    "Howdy",  ], //1
-      [    "Nothing much",    "About to go to sleep",    "Can you guess?",    "I don't know actually",  ], //2
+      ["Fine... how are you?", "Pretty well, how are you?", "Fantastic, how are you?"], //0
+      ["Hello!", "Hi!", "Hey!", "Hi there!", "Howdy"], //1
+      ["Nothing much", "About to go to sleep", "Can you guess?", "I don't know actually"], //2
       ["I am infinite"], //3
       ["I am just a bot", "I am a bot. What are you?"], //4
       // Add more responses here as needed
     ];
 
-    const alternatives = ["Go on...", "Try again"];
+    const alternatives = ["I'm sorry I do not have that information right now, please contact customer support for more details."];
+
+    function output(input: string): string {
+      let product;
+      let text = input.toLowerCase().replace(/[^\w\s\d]/gi, "");
+      text = text
+        .replace(/ a /g, " ")
+        .replace(/whats/g, "what is")
+        .replace(/please /g, "")
+        .replace(/ please/g, "");
+      if (compare(utterances, answers, text)) {
+        product = compare(utterances, answers, text);
+      }
+      else {
+        product = alternatives[Math.floor(Math.random() * alternatives.length)];
+      }
+      //update  DOM
+      // @ts-ignore
+      //addChatEntry(input, product);
+      return product;
+    }
+
+    function compare(
+      utterancesArray: string[][],
+      answersArray: string[][],
+      string: string
+    ): string | undefined {
+      let item: string | undefined;
+      for (let x = 0; x < utterancesArray.length; x++) {
+        for (let y = 0; y < utterancesArray[x].length; y++) {
+          if (utterancesArray[x][y] === string) {
+            const items = answersArray[x];
+            item = items[Math.floor(Math.random() * items.length)];
+            return item;
+          }
+        }
+      }
+      return item;
+    }
 
 
     function writeMessage() {
       const today = new Date();
       let text = textarea.value.trim().replace(/[^\w\s\d]/gi, "");
-      output(text);
-      let message = `
-          <div class="chatbox-message-item sent" style=" align-self: flex-end; background: blue; color: white; border-radius: .75rem 0 .75rem .75rem; padding-left: 90%">
-            <div class="chatbox-message-item-text">
-              ${text}
-            </div>
-            <div class="chatbox-message-item-time">${addZero(today.getHours())}:${addZero(today.getMinutes())}</div>
-          </div>
-        `;
-      chatboxMessageWrapper.insertAdjacentHTML('beforeend', message);
+      autoReply(text);
+      let person = `
+      <div class="chatbox-message-item sent" style=" align-self: flex-end; background: blue; color: white; border-radius: .75rem 0 .75rem .75rem; padding-left: 90%">
+        <div class="chatbox-message-item-text">
+          ${text}
+        </div>
+        <div class="chatbox-message-item-time">${addZero(today.getHours())}:${addZero(today.getMinutes())}</div>
+      </div>
+    `;
+      chatboxMessageWrapper.insertAdjacentHTML('beforeend', person);
       chatboxForm.style.alignItems = 'center';
       textarea.rows = 1;
       textarea.focus();
@@ -133,29 +151,20 @@ export class ChatbotComponent implements OnInit {
       scrollBottom();
     }
 
-    function output(input: string): string {
-      let text = input.toLowerCase().replace(/[^\w\s\d]/gi, "");
-      text = text
-        .replace(/ a /g, " ")
-        .replace(/whats/g, "what is")
-        .replace(/please /g, "")
-        .replace(/ please/g, "");
-      return text;
-    }
-
-    function autoReply() {
+    function autoReply(input: string) {
       const today = new Date();
-      let message = `
-        <div class="chatbox-message-item received" style="background: antiquewhite; border-radius: 0 .75rem .75rem .75rem; box-shadow: .25rem .25rem 1.5rem rgba(0, 0, 0, .05);">
-          <div class="chatbox-message-item-text">
-            Thank you for your awesome support!
-          </div>
-          <div class="chatbox-message-item-time">${addZero(today.getHours())}:${addZero(today.getMinutes())}</div>
+      let product = output(input);
+      let bot = `<div class="chatbox-message-item received" style=" align-self: flex-start; background: white; border-radius: 0 .75rem .75rem .75rem; padding-right: 90%">
+        <div class="chatbox-message-item-text">
+          ${product}
         </div>
-      `;
-      chatboxMessageWrapper.insertAdjacentHTML('beforeend', message);
+        <div class="chatbox-message-item-time">${addZero(today.getHours())}:${addZero(today.getMinutes())}</div>
+      </div>`;
+      chatboxMessageWrapper.insertAdjacentHTML('beforeend', bot);
       scrollBottom();
     }
+
+
 
     function scrollBottom() {
       chatboxMessageWrapper.scrollTo(0, chatboxMessageWrapper.scrollHeight);
