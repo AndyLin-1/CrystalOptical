@@ -178,7 +178,7 @@ export class ChatbotComponent implements OnInit {
       ["All of our glasses are anti-glare, scratch-resistant, and blue light coatings, with no extra cost."], //3
       ["We have a virtual try-on feature on our website that allows you to upload a photo of yourself and see how different glasses styles look on your face."], //4
       ["We currently only offer shipping to any location within Canada."], //5
-      ["Shipping is free to any place located in Canada, do not offer shipping anywhere else."], //6
+      ["Shipping is free to any place located in Canada, we do not offer shipping anywhere else."], //6
       ["We offer free shipping to any location within Canada, and it takes 5-7 business days to arrive."], //7
       ["We currently only accept credit card payments, such as VISA and MasterCard"], //8
       ["You can check your order status by logging into your account or by contacting customer service."], //9
