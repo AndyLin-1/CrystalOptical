@@ -133,7 +133,6 @@ export class ChatbotComponent implements OnInit {
     function writeMessage() {
       const today = new Date();
       let text = textarea.value.trim().replace(/[^\w\s\d]/gi, "");
-      autoReply(text);
       let person = `
       <div class="chatbox-message-item sent" style=" align-self: flex-end; background: blue; color: white; border-radius: .75rem 0 .75rem .75rem; padding-left: 90%">
         <div class="chatbox-message-item-text">
@@ -149,14 +148,15 @@ export class ChatbotComponent implements OnInit {
       textarea.value = '';
       chatboxNoMessage.style.display = 'none';
       scrollBottom();
+      autoReply(text);
     }
 
     function autoReply(input: string) {
       const today = new Date();
-      let product = output(input);
-      let bot = `<div class="chatbox-message-item received" style=" align-self: flex-start; background: white; border-radius: 0 .75rem .75rem .75rem; padding-right: 90%">
+      let text = output(input);
+      let bot = `<div class="chatbox-message-item received" style=" align-self: flex-start; background: antiquewhite; border-radius: 0 .75rem .75rem .75rem; padding-right: 90%">
         <div class="chatbox-message-item-text">
-          ${product}
+          ${text}
         </div>
         <div class="chatbox-message-item-time">${addZero(today.getHours())}:${addZero(today.getMinutes())}</div>
       </div>`;
