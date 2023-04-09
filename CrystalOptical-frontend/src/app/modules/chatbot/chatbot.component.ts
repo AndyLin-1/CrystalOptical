@@ -72,20 +72,107 @@ export class ChatbotComponent implements OnInit {
     }
 
     const utterances = [
-      ["how are you", "how is life", "how are things"], //0
-      ["hi", "hey", "hello", "good morning", "good afternoon"], //1
-      ["what are you doing", "what is going on", "what is up"], //2
-      ["how old are you"], //3
-      ["who are you", "are you human", "are you bot", "are you human or bot"], //4
-      // Add more utterances here as needed
+      ["types of glasses", "Types of Glasses", "Types Of glasses", "Types Of Glasses",
+        "types Of Glasses", "types Of glasses"], //0
+
+      ["types of frames", "Types of Frames", "Types Of frames", "Types Of Frames",
+        "types Of Frames", "types Of frames"], //1
+
+      ["types of lenses", "Types of Lenses", "Types Of lenses", "Types Of Lenses",
+        "types Of Lenses", "types Of lenses"],  //2
+
+      ["Types of Lens Coatings", "Types of lens coatings", "Types of lens Coatings",
+        "types of Lens Coatings", "types of lens coatings", "Types Of Lens Coatings",
+        "Types Of lens coatings", "Types Of Lens coatings", "Types Of Lens Coatings",
+        "Types of Lens coatings", "types Of Lens coatings", "types Of lens coatings",
+        "types Of Lens Coatings", "types of lens Coatings"], //3
+
+      ["try on", "tryon", "try out", "tryout", "test out", "testout", "demo", "demonstrate",
+        "sample", "put on", "wear", "try", "preview", "model", "experience",
+        "see how it looks", "see how it fits", "see how they look",
+        "see how they fit", "see how it suits", "see how they suit",
+        "see how they feel", "try it on", "try them on", "try these on",
+        "try this on", "test it out", "test them out", "test these out",
+        "test this out", "demo it", "demo them", "demo these", "demo this",
+        "demonstrate it", "demonstrate them", "demonstrate these",
+        "demonstrate this", "sample it", "sample them", "sample these",
+        "sample this", "check it out", "check them out", "check these out",
+        "check this out", "put it on", "put them on", "put these on",
+        "put this on", "wear it", "wear them", "wear these", "wear this",
+        "try it", "try them", "try these", "try this", "preview it",
+        "preview them", "preview these", "preview this", "model it",
+        "model them", "model these", "model this", "experience it",
+        "experience them", "experience these", "experience this",
+        "see how it looks on me", "see how it fits me",
+        "see how they look on me", "see how they fit me",
+        "see how it suits me", "see how they suit me",
+        "see how they feel on me", "try it on for size",
+        "try them on for size", "try these on for size", "try this on for size"], //4
+
+      ["shipping", "Shipping", "SHIP", "ship", "shipping options", "Shipping Options",
+        "Shipping options", "shipping Options", "SHIPping options", "ShIPping Options",
+        "SHIPping", "ShIPping", "shipPING", "ShIp", "ShIP"], //5
+
+      ["shipping cost",  "Shipping Cost",  "shipping costs",  "Shipping Costs",
+        "shipping fee",  "Shipping Fee", "shipping fees",
+        "Shipping Fees",  "cost of shipping",  "Cost of Shipping",
+        "shipping price",  "Shipping Price",  "shipping prices",  "Shipping Prices"], //6
+
+      ["shipping time",  "Shipping Time",  "Shipping time",  "shipping times",
+        "Shipping Times",  "Shipping times",  "delivery time",  "Delivery Time",
+        "Delivery time",  "delivery times",  "Delivery Times",  "Delivery times",
+        "estimated shipping time",  "Estimated Shipping Time",  "Estimated shipping time",
+        "estimated delivery time",  "Estimated Delivery Time",  "Estimated delivery time",
+        "shipping time frame",  "Shipping Time Frame",  "Shipping time frame",
+        "shipping duration",  "Shipping Duration",  "Shipping duration",
+        "delivery duration",  "Delivery Duration",  "Delivery duration"], //7
+
+      [  "payment methods",  "Payment Methods",  "Payment methods",  "payment Methods",
+        "accepted payment methods",  "Accepted Payment Methods",  "Accepted payment methods",
+        "accepted Payment Methods",  "available payment methods",  "Available Payment Methods",
+        "Available payment methods",  "available Payment Methods"], //8
+
+      ["check my order status", "Check My Order Status",
+        "Check my order status", "Check Order Status", "check order status",
+        "Order status check", "Order Status Check"], //9
+
+      ["return my glasses",  "return glasses",  "glasses return",
+        "returning glasses",  "return eyewear",  "eyewear return",  "return my eyewear",], //10
+
+      ["warranty policy",  "warranty",  "product warranty"], //11
+
+      [  "cancel my order",  "cancellation of order",  "cancel order",  "cancelling an order",
+        "order cancellation",  "can I cancel my order",  "how to cancel an order",
+        "how do I cancel my order",  "cancelling my order",  "order cancel",
+        "order cancelation",  "cancel my purchase",  "cancel my purchase order",
+        "can I cancel my purchase",  "how to cancel my purchase",
+        "how do I cancel my purchase",  "cancelling my purchase",
+        "purchase cancellation",  "can I cancel my purchase order"], //12
+
+      [  "Thank you for your assistance",  "Thank you for your help",  "Thanks for your assistance",
+        "Thanks for your help",  "Thank you so much for your assistance",
+        "Thank you so much for your help",  "Thanks so much for your assistance",
+        "Thanks so much for your help",  "Thank you very much for your assistance",
+        "Thank you very much for your help",  "Thanks a lot for your assistance",
+        "Thanks a lot for your help"], //13
     ];
 
     const answers = [
-      ["Fine... how are you?", "Pretty well, how are you?", "Fantastic, how are you?"], //0
-      ["Hello!", "Hi!", "Hey!", "Hi there!", "Howdy"], //1
-      ["Nothing much", "About to go to sleep", "Can you guess?", "I don't know actually"], //2
-      ["I am infinite"], //3
-      ["I am just a bot", "I am a bot. What are you?"], //4
+      ["We currently only offer non-prescription glasses."], //0
+      ["We have frames in various colors, and sizes (XS, M, L, XL)."], //1
+      ["We offer standard non-prescription lenses for all our glasses."], //2
+      ["All of our glasses are anti-glare, scratch-resistant, and blue light coatings, with no extra cost."], //3
+      ["We have a virtual try-on feature on our website that allows you to upload a photo of yourself and see how different glasses styles look on your face."], //4
+      ["We currently only offer shipping to any location within Canada."], //5
+      ["Shipping is free to any place located in Canada, do not offer shipping anywhere else."], //6
+      ["We offer free shipping to any location within Canada, and it takes 5-7 business days to arrive."], //7
+      ["We currently only accept credit card payments, such as VISA and MasterCard"], //8
+      ["You can check your order status by logging into your account or by contacting customer service."], //9
+      ["We offer a 30-day return policy, and you can return your glasses for a full refund."], //10
+      ["We offer a 1-year warranty on all our glasses."], //11
+      ["You can cancel your order within 24 hours of placing it by contacting our customer service team.\n" +
+      "If your order has already shipped, you'll need to wait until you receive it and then initiate a return or exchange if necessary."], //12
+      ["You're welcome!"],
       // Add more responses here as needed
     ];
 
@@ -119,7 +206,7 @@ export class ChatbotComponent implements OnInit {
       let item: string | undefined;
       for (let x = 0; x < utterancesArray.length; x++) {
         for (let y = 0; y < utterancesArray[x].length; y++) {
-          if (utterancesArray[x][y] === string) {
+          if (string.includes(utterancesArray[x][y])) {
             const items = answersArray[x];
             item = items[Math.floor(Math.random() * items.length)];
             return item;
@@ -163,8 +250,6 @@ export class ChatbotComponent implements OnInit {
       chatboxMessageWrapper.insertAdjacentHTML('beforeend', bot);
       scrollBottom();
     }
-
-
 
     function scrollBottom() {
       chatboxMessageWrapper.scrollTo(0, chatboxMessageWrapper.scrollHeight);
