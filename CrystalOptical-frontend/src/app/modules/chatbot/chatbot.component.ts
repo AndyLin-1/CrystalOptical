@@ -59,7 +59,9 @@ export class ChatbotComponent implements OnInit {
       const chatboxNoMessage = document.querySelector('.chatbox-message-no-message') as HTMLElement;
 
       // Clear the chat message content
-      chatboxMessageWrapper.innerHTML = '';
+      chatboxMessageWrapper.innerHTML = `
+       <h4 class="chatbox-message-no-message"
+        style="text-align: center">How can I help you today?</h4></div>`;
 
       // Hide any messages
       chatboxNoMessage.style.display = 'block';
