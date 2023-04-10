@@ -1,6 +1,6 @@
 <div class="container">
   <div class="image-box">
-    <img src="{{ item.imagePath }}" width="250" height="200" class="glasses">
+    <img src="{{ item.imagePath }}" class="glasses">
   </div>
 
   <div class="data-box">
@@ -8,6 +8,7 @@
       <h1>{{ item.brand + ' ' + item.name }}</h1>
       <h2>${{ item.price }}</h2>
       <p> {{ description }}</p>
+      <p>Rating: {{item.rating.toFixed(2)}}</p>
       <hr>
       <!--<img src="assets/singular-item/test_glasses.png" class="glasses">-->
     </div>
@@ -24,6 +25,9 @@
       <div class="sizes">
         <p style="margin-right: 5%;">Size: </p>
         <p>{{item.frameSize}}</p>
+      </div>
+      <div>
+        <p>Stock: {{item.itemStock}}</p>
       </div>
     </div>
     <br />
@@ -43,14 +47,22 @@
                       color: white;
                       ">+
         </button>
-        <button mat-button class="buy-now-button" (click)="buy()">Buy Now</button>
-        <button mat-button class="shopping-cart-icon"><img src="./assets/site/cart.png"></button>
+        <button mat-button class="buy-now-button" (click)="buy()">Add to Cart</button>
         <!--<increment-input></increment-input>-->
       </div>
 
-
+      <br/>
       <div>
-
+          <span
+            *ngFor="let star of stars; let i = index"
+            (click)="rate(i + 1)"
+          >
+            <ng-container *ngIf="star; else noStar">⭐</ng-container>
+            <ng-template #noStar>★</ng-template>
+          </span>
+        <button mat-button class="buy-now-button" (click)="submitRate()">Rate</button>
+      </div>
+      <div>
       </div>
       <div>
       </div>
@@ -94,7 +106,13 @@
     <br/>
     <h1>Virtual Try On</h1>
     <br/>
-    <button mat-button class="camera-icon"><img src="./assets/site/camera.png" width="10%"></button>
+    <button mat-button class="camera-icon" (click)="toggleCamera()" style="width: 10%;"><img src="./assets/site/camera.png" style="width: 50%"></button>
+    <div *ngIf="toggle">
+      <div style="position: relative;">
+        <webcam [height]="480" [width]="640" ></webcam>
+        <img src="{{ item.imagePath }}" class="glasses" style="position: absolute; top: 30%; left: 40%; width: 30%; height: 30%">
+      </div>
+    </div>
   </div>
 </div>
 

@@ -10,6 +10,7 @@ import com.example.crystaloptical.model.Users;
 import com.example.crystaloptical.model.repo.ItemRepository;
 import com.example.crystaloptical.model.repo.OrderRepository;
 import com.example.crystaloptical.model.repo.UserRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,7 @@ import java.util.List;
 import static com.example.crystaloptical.model.Order.deliveryStatus.*;
 
 @Service
+@Slf4j
 public class OrderService {
 
     private final OrderRepository orderRepository;
@@ -62,19 +64,15 @@ public class OrderService {
     }
 
     private boolean verifyPayment(PaymentRequest paymentRequest){
-//        if(!paymentRequest.getCardNumber().equals("1111222233334444")) {
-//            System.out.println("1");
-//            return false;
-//        } else if(!paymentRequest.getName().equals("test name")) {
-//            System.out.println("2");
-//            return false;
-//        } else if(paymentRequest.getExpiryYear() <= 22) {
-//            System.out.println("3");
-//            return false;
-//        } else if(paymentRequest.getExpiryYear() == 22 && paymentRequest.getExpiryMonth() < 4){
-//            System.out.println("4");
-//            return false;
-//        }
+        if(!paymentRequest.getCardNumber().equals(1111222233334444L)) {
+            return false;
+        } else if(!paymentRequest.getName().equalsIgnoreCase("Admin Card")) {
+            return false;
+        } else if(paymentRequest.getExpiryYear() <= 22) {
+            return false;
+        } else if(paymentRequest.getExpiryYear() == 22 && paymentRequest.getExpiryMonth() < 4){
+            return false;
+        }
         return true;
     }
 

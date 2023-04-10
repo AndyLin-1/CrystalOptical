@@ -39,12 +39,17 @@ export class CheckoutPageComponent implements OnInit {
     this.storageService.updateCart(this.items);
   }
 
+  clearCart(){
+    this.storageService.updateCart([]);
+    this.items = [];
+  }
+
   calculateTotal(): number{
     let total = 0;
     for (let i = 0; i < this.items.length; i++) {
       total += ((this.items)[i].item.price * (this.items)[i].quantity);
     }
-    return total;
+    return Number(total.toFixed(2));
   }
 
 }

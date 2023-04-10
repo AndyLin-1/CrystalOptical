@@ -5,6 +5,7 @@ import {itemsQuantityInterface} from "../models/itemQuantity.interface";
 const LOGGED_IN_COOKIE = "logged_in";
 const CART = "cart";
 const NAME = "name";
+const USERID = "user_id"
 
 @Injectable({
   providedIn: 'root'
@@ -50,8 +51,9 @@ export class StorageService {
     return <string>this.getCookie(NAME);
   }
 
-  login(name: string, token: string): void
+  login(name: string, token: string, id: number): void
   {
+    this.setCookie(USERID, id.toString(), 1800);
     this.setCookie(NAME, name, 1800);
     this.setCookie(LOGGED_IN_COOKIE, token, 1800);
   }
@@ -80,7 +82,7 @@ export class StorageService {
   }
 
 
-  getUserId() {
-    return 1;
+  getUserId() : number {
+    return Number(this.getCookie(USERID));
   }
 }

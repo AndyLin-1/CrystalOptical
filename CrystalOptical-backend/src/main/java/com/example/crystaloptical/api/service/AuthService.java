@@ -53,7 +53,7 @@ public class AuthService {
         user.setLastName(lastName);
         user.setPassword(bCryptPasswordEncoder.encode(password)); // encrypt password using BCrypt
         user.setEnabled(true);
-        user.setRole(UserRole.ADMIN);
+        user.setRole(UserRole.USER);
 
         //Save User into Database
         userRepository.save(user);
@@ -99,5 +99,35 @@ public class AuthService {
             sb.append(random.nextInt(10));
         }
         return sb.toString();
+    }
+
+    public ResponseEntity<MessageResponse> registerAdmin(@Valid UserRegisterRequest userRegisterRequest) throws Exception {
+        String email = userRegisterRequest.getEmail();
+        String password = userRegisterRequest.getPassword();
+        String firstName = userRegisterRequest.getFirstName();
+        String lastName = userRegisterRequest.getLastName();
+
+        if (userService.userWithEmailExists(email)) {
+            throw new Exception("Email already taken");
+        }
+
+        Users user = new Users();
+        user.setEmail(email);
+        user.setFirstName(firstName);
+        user.setLastName(lastName);
+        user.setPassword(bCryptPasswordEncoder.encode(password)); // encrypt password using BCrypt
+        user.setEnabled(true);
+        user.setRole(UserRole.ADMIN);
+
+        //Save User into Database
+        userRepository.save(user);
+
+        //Confirmation Token need to send Email
+
+        //JWT
+
+//        UserAuthRequest login = UserAuthRequest.builder().email(user.getEmail()).password(user.getPassword()).build();
+        MessageResponse message = MessageResponse.builder().message("Success").build();
+        return ResponseEntity.ok().body(message);
     }
 }

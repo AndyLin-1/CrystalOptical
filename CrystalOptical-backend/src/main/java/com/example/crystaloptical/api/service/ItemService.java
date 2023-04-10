@@ -1,6 +1,7 @@
 package com.example.crystaloptical.api.service;
 
 import com.example.crystaloptical.api.dto.request.ItemAddRequest;
+import com.example.crystaloptical.api.dto.response.MessageResponse;
 import com.example.crystaloptical.model.Item;
 import com.example.crystaloptical.model.repo.ItemRepository;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +18,7 @@ public class ItemService {
         this.itemRepository = itemRepository;
     }
 
-    public ResponseEntity<String> addItem(ItemAddRequest itemAddRequest){
+    public ResponseEntity<MessageResponse> addItem(ItemAddRequest itemAddRequest){
         Item item = new Item();
         item.setName(itemAddRequest.getName());
         item.setPrice(itemAddRequest.getPrice());
@@ -25,8 +26,9 @@ public class ItemService {
         item.setFrameSize(itemAddRequest.getFrameSize());
         item.setColour(itemAddRequest.getColour());
         item.setItemStock(itemAddRequest.getItemStock());
+        item.setImagePath(itemAddRequest.getImagePath());
         itemRepository.save(item);
-        return ResponseEntity.ok().body("Success");
+        return ResponseEntity.ok().body(MessageResponse.builder().message("YES").build());
     }
 
 
@@ -62,9 +64,8 @@ public class ItemService {
         return ResponseEntity.ok(list);
     }
 
-    public ResponseEntity<List<Item>> getAllItemsByFilter(String brand, String color, double rating) {
-        List<Item> list = itemRepository.findAllByBrandLikeIgnoreCaseAndColourLikeIgnoreCaseAndRatingGreaterThanOrderByName(brand, color, rating).stream().toList();
-        return ResponseEntity.ok(list);
+    public ResponseEntity<List<Item>> getAllItemsByFilter(String brand, String name) {
+        return this.getAllItemsByFilterSorted(brand, name, "");
     }
 
 
@@ -80,18 +81,22 @@ public class ItemService {
         return ResponseEntity.ok(item.getRating());
     }
 
-    public ResponseEntity<List<Item>> getAllItemsByFilterSorted(String brand, String color, double rating, String sortby) {
+    public ResponseEntity<List<Item>> getAllItemsByFilterSorted(String brand, String name, String sortby) {
         List<Item> list;
+        name += "%";
+        brand += "%";
         if(sortby.equalsIgnoreCase("brand")) {
-            list = itemRepository.findAllByBrandLikeIgnoreCaseAndColourLikeIgnoreCaseAndRatingGreaterThanOrderByBrand(brand, color, rating).stream().toList();
+            list = itemRepository.findAllByBrandLikeIgnoreCaseAndNameLikeIgnoreCaseOrderByBrand(brand, name).stream().toList();
         } else if(sortby.equalsIgnoreCase("priceDesc")) {
-            list = itemRepository.findAllByBrandLikeIgnoreCaseAndColourLikeIgnoreCaseAndRatingGreaterThanOrderByPriceDesc(brand, color, rating).stream().toList();
+            list = itemRepository.findAllByBrandLikeIgnoreCaseAndNameLikeIgnoreCaseOrderByPriceDesc(brand, name).stream().toList();
         } else if(sortby.equalsIgnoreCase("priceAsc")) {
-            list = itemRepository.findAllByBrandLikeIgnoreCaseAndColourLikeIgnoreCaseAndRatingGreaterThanOrderByPriceAsc(brand, color, rating).stream().toList();
+            list = itemRepository.findAllByBrandLikeIgnoreCaseAndNameLikeIgnoreCaseOrderByPriceAsc(brand, name).stream().toList();
         }else if(sortby.equalsIgnoreCase("ratingDesc")) {
-            list = itemRepository.findAllByBrandLikeIgnoreCaseAndColourLikeIgnoreCaseAndRatingGreaterThanOrderByRatingDesc(brand, color, rating).stream().toList();
+            list = itemRepository.findAllByBrandLikeIgnoreCaseAndNameLikeIgnoreCaseOrderByRatingDesc(brand, name).stream().toList();
+        } else if(sortby.equalsIgnoreCase("ratingAsc")) {
+            list = itemRepository.findAllByBrandLikeIgnoreCaseAndNameLikeIgnoreCaseOrderByRatingAsc(brand, name).stream().toList();
         } else {
-            list = itemRepository.findAllByBrandLikeIgnoreCaseAndColourLikeIgnoreCaseAndRatingGreaterThanOrderByRatingAsc(brand, color, rating).stream().toList();
+            list = itemRepository.findAllByBrandLikeIgnoreCaseAndNameLikeIgnoreCaseOrderByName(brand, name).stream().toList();
         }
         return ResponseEntity.ok(list);
     }

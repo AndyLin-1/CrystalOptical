@@ -1,11 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
-import { SimpleItemComponent } from './modules/simple-item/simple-item.component';
 import {AppHeaderComponent} from "./modules/app-header/app-header.component";
 import {ItemDataComponent} from "./modules/item-data/item-data.component";
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -19,11 +17,19 @@ import {CreateAccountComponent} from "./modules/create-account/create-account.co
 import {PaymentComponent} from "./modules/payment/payment.component";
 import {ChatbotComponent} from "./modules/chatbot/chatbot.component";
 import { OrderInfoComponent } from './modules/order-info/order-info.component';
-
+import {CataloguePageComponent} from "./modules/catalogue-page/catalogue-page.component";
+import {MatCardModule} from '@angular/material/card';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatSelectModule} from "@angular/material/select";
+import {FrontPageComponent} from "./modules/front-page/front-page.component";
+import {MatIconModule} from "@angular/material/icon";
+import {MatGridListModule} from "@angular/material/grid-list";
+import {WebcamModule} from "ngx-webcam";
+import { OrderComponent } from './modules/order/order.component';
+import { AddItemComponent } from './modules/add-item/add-item.component';
 
 @NgModule({
   declarations: [AppComponent,
-    SimpleItemComponent,
     AppHeaderComponent,
     ItemDataComponent,
     CheckoutPageComponent,
@@ -32,7 +38,12 @@ import { OrderInfoComponent } from './modules/order-info/order-info.component';
     CreateAccountComponent,
     PaymentComponent,
     ChatbotComponent,
-    OrderInfoComponent],
+    OrderInfoComponent,
+    FrontPageComponent,
+    ItemDataComponent,
+    CataloguePageComponent,
+    OrderComponent,
+    AddItemComponent],
     imports: [
         BrowserModule,
         AppRoutingModule,
@@ -42,7 +53,13 @@ import { OrderInfoComponent } from './modules/order-info/order-info.component';
         NoopAnimationsModule,
         MatButtonToggleModule,
         MatInputModule,
-        MatButtonModule
+        MatButtonModule,
+        MatCardModule,
+        MatChipsModule,
+        MatSelectModule,
+        MatIconModule,
+        MatGridListModule,
+        WebcamModule
     ],
   providers: [],
   bootstrap: [AppComponent]
