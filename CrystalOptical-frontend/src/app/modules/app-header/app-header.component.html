@@ -1,15 +1,23 @@
 <nav class="navbar">
   <ul>
-    <li class="nav-logo"><img src="./assets/site/logo.png" alt="Crystal Optical logo" class="logo"></li>
+    <li class="nav-logo" [routerLinkActive]="['active']" [routerLink]="['/']"><img src="./assets/site/logo.png" alt="Crystal Optical logo" class="logo"></li>
     <li class="nav-toggle">
       <i class="fas fa-bars"></i>
     </li>
     <li class="nav-links"><a href="#">Catalogue</a></li>
-    <li class="nav-links"><a href="#">Favorite</a></li>
-    <li class="nav-links"><a href="#">Support</a></li>
-    <li class="nav-links"><img class="nav-icon" src="./assets/site/profile.png" alt="profile icon"></li>
+<!--    <li class="nav-links"><a href="#">Favorite</a></li>-->
+<!--    <li class="nav-links"><a href="#">Support</a></li>-->
+    <!--<li class="nav-links"><img class="nav-icon" src="./assets/site/profile.png" alt="profile icon"></li>-->
+    <li class="test"><img class="nav-icon" src="./assets/site/cart.png" alt="cart icon" [routerLinkActive]="['active']" [routerLink]="['/checkout']"></li>
+    <li class="cart-quantity-count">{{this.update()}}</li>
     <p>{{this.getName()}}</p>
-    <li class="nav-links"><img class="nav-icon" src="./assets/site/cart.png" alt="cart icon" [routerLinkActive]="['active']" [routerLink]="['/checkout']"></li>
-    <li>{{this.update()}}</li>
+
+    <div *ngIf="getName() === ''">
+      <li class="nav-links"><a [routerLinkActive]="['active']" [routerLink]="['/login']">Login</a></li>
+    </div>
+    <div *ngIf="getName() !== ''">
+      <li class="nav-links" (click)="logOut()"><a>Logout</a></li>
+    </div>
+
   </ul>
 </nav>

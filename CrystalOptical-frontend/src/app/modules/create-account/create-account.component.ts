@@ -2,23 +2,29 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ApiService} from "../../services/api.service";
 import {RegisterRequestInterface} from "../../models/registerRequest.interface";
+import {messageInterface} from "../../models/message.interface";
+import {Router} from "@angular/router";
 import {StorageService} from "../../services/storage.service";
 
 @Component({
-  selector: 'app-simple-register',
-  templateUrl: './simple-register.component.html',
-  styleUrls: ['./simple-register.component.css']
+  selector: 'app-create-account',
+  templateUrl: './create-account.component.html',
+  styleUrls: ['./create-account.component.css']
 })
-export class SimpleRegisterComponent implements OnInit {
+export class CreateAccountComponent implements OnInit {
+
   form!: FormGroup;
   message: String = "";
 
-  constructor(
-    private fb: FormBuilder,
-    private apiService: ApiService,
-    private storageService: StorageService) {}
+  constructor(private fb: FormBuilder,
+              private apiService: ApiService,
+              private router: Router,
+              private storageService: StorageService) { }
 
   ngOnInit(): void {
+    if(this.storageService.userLoggedIn()){
+      this.router.navigateByUrl("/");
+    }
     this.initForm();
   }
 
@@ -30,41 +36,16 @@ export class SimpleRegisterComponent implements OnInit {
       password: this.form.value.password,
     }
     console.log("request=" + request.firstName + request.lastName + request.email + request.password);
-    this.apiService.register(request).subscribe({next : (data: String) => {
-        this.message = data;
+    this.apiService.register(request).subscribe({next : (data: messageInterface) => {
+        this.message = data.message;
+        this.router.navigateByUrl("/login");
       },
       error: (error) => {
         this.message = "error";
         console.log(error);
       },
     },);
-
-    // this.message = "Success";
-
-    // this.apiService.login(request).subscribe({next : (data: string) => {
-    //     this.message = "Success";
-    //   },
-    //   error: (error) => {
-    //     this.message = "Wrong Password/Unregistered"
-    //     console.log(error);
-    //   },
-    // },);
   }
-
-  test() {
-    // this.apiService.test().subscribe({next: (data) => {
-    //   console.log(data);
-    //   },
-    //   error: (error) => {
-    //     this.message = "error";
-    //     console.log(error);
-    //   },
-    // },);
-    this.storageService.logout().then(r => {
-      console.log("logged out");
-    });
-  }
-
 
   private initForm(): void {
     this.form = this.fb.group({
@@ -74,6 +55,5 @@ export class SimpleRegisterComponent implements OnInit {
       password: ["", [Validators.required]],
     });
   }
+
 }
-
-

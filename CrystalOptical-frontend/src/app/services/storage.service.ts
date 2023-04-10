@@ -17,6 +17,10 @@ export class StorageService {
     return this.getCookie(LOGGED_IN_COOKIE) != null;
   }
 
+  getJwt(): string {
+    return <string>this.getCookie(LOGGED_IN_COOKIE);
+  }
+
   getCart() : itemsQuantityInterface[] {
     let cart = <string>this.getCookie(CART);
     if(cart != null){
@@ -76,4 +80,7 @@ export class StorageService {
   }
 
 
+  getUserId() {
+    return 1;
+  }
 }

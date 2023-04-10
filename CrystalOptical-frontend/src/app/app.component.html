@@ -1,15 +1,10 @@
-<app-header></app-header>
-<!--<p>Simple Interface For Testing</p>-->
-<!--<a [routerLinkActive]="['active']" [routerLink]="['/register']"-->
-<!--&gt;Register</a-->
-<!--&gt;-->
-<!--<br>-->
-<!--<a [routerLinkActive]="['active']" [routerLink]="['/login']"-->
-<!--&gt;Login</a-->
-<!--&gt;-->
-<!--<br>-->
-<a [routerLinkActive]="['active']" [routerLink]="['/items']"
->Items</a
->
-<router-outlet></router-outlet>
-
+<div class="header">
+  <app-header></app-header>
+</div>
+<div class="wrapper">
+  <app-chatbot></app-chatbot>
+  <router-outlet></router-outlet>
+</div>
+<div class="footer">
+  <app-footer></app-footer>
+</div>

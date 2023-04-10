@@ -30,7 +30,7 @@
 
 <!--Buttons-->
 <div class="button-container">
-  <div class="align-left"><button class="left-button" mat-raised-button >Return to Shop</button></div>
+  <div class="align-left" [routerLinkActive]="['active']" [routerLink]="['/']"><button class="left-button" mat-raised-button >Return to Shop</button></div>
   <div class="align-right"><button class="right-button" mat-raised-button (click)="updateCart()">Update Cart</button></div>
 </div>
 <br /><br /><br />
@@ -61,7 +61,7 @@
   </div>
 
   <div class="total-container">
-    <div class="checkout-button-div"><button class="checkout-button" mat-raised-button>Proceed to Checkout</button></div>
+    <div class="checkout-button-div" [routerLinkActive]="['active']" [routerLink]="['/payment']"><button class="checkout-button" mat-raised-button>Proceed to Checkout</button></div>
   </div>
 </div>
 </div>

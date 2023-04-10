@@ -3,6 +3,7 @@ package com.example.crystaloptical.api.controller;
 
 import com.example.crystaloptical.api.dto.request.UserAuthRequest;
 import com.example.crystaloptical.api.dto.request.UserRegisterRequest;
+import com.example.crystaloptical.api.dto.response.MessageResponse;
 import com.example.crystaloptical.api.dto.response.UserLoginResponse;
 import com.example.crystaloptical.api.service.AuthService;
 import com.example.crystaloptical.api.service.UserService;
@@ -34,7 +35,7 @@ public class UserController {
      */
     @ResponseStatus(OK)
     @PostMapping("/register")
-    public ResponseEntity<String> registerUser(
+    public ResponseEntity<MessageResponse> registerUser(
             @Valid @RequestBody UserRegisterRequest userRegisterRequest) throws Exception {
         return authService.registerUser(userRegisterRequest);
     }

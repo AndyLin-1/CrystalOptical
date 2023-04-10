@@ -4,6 +4,9 @@ import {MyHttpService} from "./my-http.service";
 import {LoginRequestInterface} from "../models/loginRequest.interface";
 import {RegisterRequestInterface} from "../models/registerRequest.interface";
 import {HttpHeaders} from "@angular/common/http";
+import {messageInterface} from "../models/message.interface";
+import {orderInfoInterface, orderInterface} from "../models/order";
+import {StorageService} from "./storage.service";
 
 const apiUrl = `http://localhost:8383/api/v1`;
 
@@ -11,7 +14,7 @@ const apiUrl = `http://localhost:8383/api/v1`;
   providedIn: "root",
 })
 export class ApiService {
-  constructor(private http: MyHttpService) {
+  constructor(private http: MyHttpService, private storageService: StorageService) {
   }
 
   //login method
@@ -21,7 +24,22 @@ export class ApiService {
 
   //register method
   register(request: RegisterRequestInterface) : Observable<any> {
-    return this.http.post<string>(`${apiUrl}/user/register`, request);
+    return this.http.post<messageInterface>(`${apiUrl}/user/register`, request);
+  }
+
+
+  sendOrder(request: orderInterface) : Observable<any> {
+    let header = new HttpHeaders({
+      "Authorization": "Bearer " + this.storageService.getJwt(),
+    });
+    return this.http.post<orderInfoInterface>(`${apiUrl}/order/order`, request, {headers: header});
+  }
+
+  getOrder(id : number) : Observable<any> {
+    let header = new HttpHeaders({
+      "Authorization": "Bearer " + this.storageService.getJwt(),
+    });
+    return this.http.get<orderInfoInterface>(`${apiUrl}/order/orderinfo/${id}`, {headers: header})
   }
 
   test() : Observable<any> {

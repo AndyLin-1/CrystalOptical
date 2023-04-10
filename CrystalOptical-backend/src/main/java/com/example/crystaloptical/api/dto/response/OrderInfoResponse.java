@@ -1,5 +1,6 @@
 package com.example.crystaloptical.api.dto.response;
 
+import com.example.crystaloptical.api.dto.data.ItemQuantityDto;
 import com.example.crystaloptical.model.ItemQuantity;
 import lombok.Builder;
 import lombok.Getter;
@@ -16,5 +17,6 @@ public class OrderInfoResponse {
 
     private long orderId;
     private long userId;
-    private List<ItemQuantity> order;
+    private List<ItemQuantityDto> order;
+    private String address;
 }
