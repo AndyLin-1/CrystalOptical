@@ -1,0 +1,144 @@
+body{
+  line-height: 1.5;
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+.footer{
+  margin:0;
+  box-sizing: border-box;
+  background-color: black;
+  width: 100%;
+}
+
+.container{
+  min-width: 100%;
+  margin:auto;
+}
+
+.row{
+  min-width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+ul{
+  list-style: none;
+}
+
+
+.footer-col{
+  width: 10%;
+  padding: 0px 60px;
+  flex-wrap: wrap;
+}
+
+
+.footer-col h4{
+  font-size: 18px;
+  color: #ffffff;
+  text-transform: capitalize;
+  margin-bottom: 15px;
+  font-weight: 500;
+  position: relative;
+}
+
+.subscribe-p{
+  font-size: 10px;
+  color: #ffffff;
+  font-weight: 300;
+  margin-bottom: 0;
+  display: flex;
+}
+
+.newAppUser-p{
+  font-size: 16px;
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 300;
+  margin-bottom: 0;
+  display: block;
+  padding-bottom: 15px;
+}
+
+.footer-col ul{
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+}
+
+.footer-col ul li:not(:last-child){
+  margin-bottom: 10px;
+}
+
+.footer-col ul li a{
+  font-size: 16px;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 300;
+  display: block;
+  transition: all 0.3s ease;
+}
+.footer-col ul li a:hover{
+  color: #ffffff;
+  padding-left: 8px;
+}
+
+.footer-col-social {
+  width: 10%;
+  padding: 0px 50px;
+}
+
+.get-app{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.store-links{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center; /* center the images horizontally */
+  margin-left: 60px; /* add margin to separate from the QR code */
+}
+
+
+.google-play, .app-store {
+  max-width: 100px; /* adjust as needed */
+  height: auto;
+  margin: 5px;
+}
+
+.qrcode{
+  width: 70px;
+  float: left;
+}
+
+.social-links{
+  padding-top: 20px;
+}
+
+.footer-col-social h4{
+  font-size: 18px;
+  color: #ffffff;
+  text-transform: capitalize;
+  margin-bottom: 15px;
+  font-weight: 500;
+  position: relative;
+}
+
+.footer-col-social .social-links a{
+  height: 40px;
+  width: 40px;
+  color: #ffffff;
+  transition: all 0.5s ease;
+  margin:0 10px 10px 0;
+}
+
+.footer-col-social .social-links a:hover{
+  color: #24262b;
+  background-color: #ffffff;
+}
+

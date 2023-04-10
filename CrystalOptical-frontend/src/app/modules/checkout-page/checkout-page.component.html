@@ -1,0 +1,73 @@
+<!--Header-->
+<div class="header-container">
+  <div class="header"><h1>Product</h1></div>
+  <div class="header"><h1>Price</h1></div>
+  <div class="header"><h1>Quantity</h1></div>
+  <div class="header"><h1>Subtotal</h1></div>
+</div>
+
+<!--Checkout Component-->
+<div *ngIf="items.length > 0">
+  <div class="item-container" *ngFor="let item of items; let i = index">
+    <div class="thumbnail-title">
+      <img src="{{item.item.imagePath}}">
+      <p class="item-name">{{ item.item.name }}</p>
+    </div>
+    <div><p class="item-price">{{ item.item.price }}</p></div>
+        <div class="quantity">
+          <form class="example-form">
+            <mat-form-field class="example-full-width" style="width: 3em">
+              <input type="number" (change)="valueChanged()"  id="{{ i }}" style="width: 3em" matInput onKeyDown="return false" min=1 max=5 value= "{{ item.quantity }}">
+            </mat-form-field>
+          </form>
+        </div>
+    <div><p class="item-subtotal">${{ (item.item.price * item.quantity).toFixed(2) }}</p></div>
+  </div>
+</div>
+<div>
+  <h1 *ngIf="items.length <=0">No Items In Cart</h1>
+</div>
+
+<!--Buttons-->
+<div class="button-container">
+  <div class="align-left" [routerLinkActive]="['active']" [routerLink]="['/']"><button class="left-button" mat-raised-button >Return to Shop</button></div>
+  <div class="align-right"><button class="right-button" mat-raised-button (click)="clearCart()">Clear Cart</button></div>
+</div>
+<br /><br /><br />
+
+<div class="container-box">
+<div class="inner-box">
+  <div>
+    <div class="total-container">
+        <div class="inside-total-container"><p class="reduce-p-margin">Subtotal:</p></div>
+        <div class="inside-total-container align-right"><p class="reduce-p-margin">${{calculateTotal()}}</p></div>
+    </div>
+    <div class="hr-styling"><hr></div>
+  </div>
+
+  <div>
+    <div class="total-container">
+      <div class="inside-total-container"><p class="reduce-p-margin">Shipping:</p></div>
+      <div class="inside-total-container align-right"><p class="reduce-p-margin">Free</p></div>
+    </div>
+    <div class="hr-styling"><hr></div>
+  </div>
+
+  <div>
+    <div class="total-container">
+      <div class="inside-total-container"><p class="reduce-p-margin">Total:</p></div>
+      <div class="inside-total-container align-right"><p class="reduce-p-margin">${{calculateTotal()}}</p></div>
+    </div>
+  </div>
+
+  <div class="total-container">
+    <div class="checkout-button-div" [routerLinkActive]="['active']" [routerLink]="['/payment']"><button class="checkout-button" mat-raised-button>Proceed to Checkout</button></div>
+  </div>
+</div>
+</div>
+
+<br />
+<p>&nbsp;</p>
+
+
+

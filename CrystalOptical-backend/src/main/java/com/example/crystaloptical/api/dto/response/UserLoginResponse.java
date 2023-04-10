@@ -9,6 +9,7 @@ import lombok.Setter;
 @Setter
 @Builder
 public class UserLoginResponse {
-    private Users user;
+    private String name;
+    private long id;
     private String jwtToken;
 }

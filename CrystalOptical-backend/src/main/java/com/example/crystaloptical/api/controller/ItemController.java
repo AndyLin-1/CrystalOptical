@@ -23,12 +23,42 @@ public class ItemController {
         return itemService.getStock(id);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Item> getItem(@PathVariable Long id) throws Exception {
+        return itemService.getItem(id);
+    }
+
     @GetMapping("/list")
     public ResponseEntity<List<Item>> getAllItems() {
         return itemService.getAllItems();
     }
 
-    @PostMapping("/rate/{id}/{rating}")
+    @GetMapping("/list/{brand}/{name}")
+    public ResponseEntity<List<Item>> getAllItemsByFilter(@PathVariable String brand, @PathVariable String name){
+        if(brand.equals("*")) {
+            brand = "";
+        }
+        if(name.equals("*")){
+            name = "";
+        }
+        return itemService.getAllItemsByFilter(brand, name);
+    }
+
+    @GetMapping("/list/{brand}/{name}/{sortby}")
+    public ResponseEntity<List<Item>> getAllItemsByFilterSorted(@PathVariable String brand, @PathVariable String name, @PathVariable String sortby){
+        if(brand.equals("*")) {
+            brand = "";
+        }
+        if(name.equals("*")){
+            name = "";
+        }
+        if(sortby.equals("*")){
+            sortby = "";
+        }
+        return itemService.getAllItemsByFilterSorted(brand, name, sortby);
+    }
+
+    @GetMapping("/rate/{id}/{rating}")
     public ResponseEntity<Double> rateItem(@PathVariable Long id, @PathVariable @Valid int rating) throws Exception {
         return itemService.rateItem(id, rating);
     }

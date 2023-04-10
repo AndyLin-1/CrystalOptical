@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login Page</title>
+  <link rel="stylesheet" type="text/css" href="log-in.component.css">
+</head>
+<body>
+<div class="container">
+  <div class="image">
+    <img src="../../../assets/Login-Create/login-image.png" alt="Placeholder Image">
+  </div>
+  <div class="form-section">
+    <div class="login-section">
+      <div class="login-title">
+        <h2>Log in to Crystal Optical</h2>
+      </div>
+      <div class="login-paragraph">
+        <p>Enter your details below</p>
+      </div>
+      <form (ngSubmit)="onSubmit()" [formGroup]="form">
+<!--        Email Field-->
+        <div class="form-group">
+            <input
+              class="text-field"
+              formControlName="email"
+              id="email"
+              placeholder="Email"
+              type="email"
+            />
+            <div class="errors">
+            <span
+              *ngIf="
+                form.get('email')?.hasError('required') &&
+                (form.get('email')?.dirty || form.get('email')?.touched)
+              "
+            >Email is required</span
+            >
+              <span
+                *ngIf="
+                form.get('email')?.hasError('email') &&
+                (form.get('email')?.dirty || form.get('email')?.touched)
+              "
+              >Invalid email</span
+              >
+            </div>
+        </div>
+<!--        Password Field-->
+        <div class="form-group">
+          <input
+            class="text-field"
+            formControlName="password"
+            id="password"
+            placeholder="Password"
+            type="password"
+          />
+          <div class="errors">
+            <span
+              *ngIf="
+                form.get('password')?.hasError('required') &&
+                (form.get('password')?.dirty || form.get('password')?.touched)
+              "
+            >Password is required</span
+            >
+            <span
+              *ngIf="
+                form.get('password')?.hasError('password') &&
+                (form.get('password')?.dirty || form.get('password')?.touched)
+              "
+            >Password is required</span
+            >
+          </div>
+        </div>
+<!--        Login Button-->
+        <div class="login-button">
+          <button [disabled]="!form.valid"
+                  class="btn round primary"
+                  id="submitLogin"
+                  type="submit"
+          >Log-in</button>
+<!--          Stylized this-->
+          <p>{{this.message}}</p>
+        </div>
+        <div class="forgot-password">
+          <a href="#">Forgot password?</a>
+        </div>
+        <div class="signup-link">
+          <p class="grey-text">Don't have an account? <a class="create-account" routerLink="/register">Create Account</a></p>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</body>
+</html>

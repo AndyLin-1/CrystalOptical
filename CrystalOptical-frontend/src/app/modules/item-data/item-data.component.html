@@ -1,0 +1,128 @@
+<div class="container">
+  <div class="image-box">
+    <img src="{{ item.imagePath }}" class="glasses">
+  </div>
+
+  <div class="data-box">
+    <div class="description">
+      <h1>{{ item.brand + ' ' + item.name }}</h1>
+      <h2>${{ item.price }}</h2>
+      <p> {{ description }}</p>
+      <p>Rating: {{item.rating.toFixed(2)}}</p>
+      <hr>
+      <!--<img src="assets/singular-item/test_glasses.png" class="glasses">-->
+    </div>
+
+    <div class="options-1">
+      <div class="colors">
+        <p style="margin-right:5%;">Colors: </p>
+        <mat-button-toggle-group name="favoriteColor" aria-label="Favorite Color">
+          <mat-button-toggle style="background-color: {{item.colour}}; width: 15px; margin-top: 18px;" value="color1" > </mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+      <br />
+
+      <div class="sizes">
+        <p style="margin-right: 5%;">Size: </p>
+        <p>{{item.frameSize}}</p>
+      </div>
+      <div>
+        <p>Stock: {{item.itemStock}}</p>
+      </div>
+    </div>
+    <br />
+    <div class="options-2">
+      <div class="increment-counter">
+        <button mat-button class="increment-counter-buttons" (click)="decrementQuantity()">-</button>
+        <input disabled
+               style="text-align: center; background-color: white; border: black solid 1px;"
+               size="1"
+               type="text"
+               class="input"
+               placeholder="Enter your task"
+               [(ngModel)]="quantity_value">
+        <button mat-button class="increment-counter-buttons"
+                (click)="incrementQuantity()"
+                style="background-color: #d74148;
+                      color: white;
+                      ">+
+        </button>
+        <button mat-button class="buy-now-button" (click)="buy()">Add to Cart</button>
+        <!--<increment-input></increment-input>-->
+      </div>
+
+      <br/>
+      <div>
+          <span
+            *ngFor="let star of stars; let i = index"
+            (click)="rate(i + 1)"
+          >
+            <ng-container *ngIf="star; else noStar">⭐</ng-container>
+            <ng-template #noStar>★</ng-template>
+          </span>
+        <button mat-button class="buy-now-button" (click)="submitRate()">Rate</button>
+      </div>
+      <div>
+      </div>
+      <div>
+      </div>
+    </div>
+    <br/>
+
+    <div class="mega-div-container">
+      <div class="customer-options-container-1">
+        <div class="table-container-1">
+          <img src="./assets/site/fast-truck.png" width="100">
+        </div>
+        <div class="table-container-2">
+          <h3>Free Delivery!</h3>
+          <p><a href="">Enter your postal code for Delivery Availability</a></p>
+
+        </div>
+      </div>
+
+      <div class="customer-options-container-2">
+        <div class="table-container-1">
+          <img src="./assets/site/calendar.png" width="100">
+        </div>
+        <div class="table-container-2">
+          <h3>Book An Appointment</h3>
+
+          <p>Open 7 Days a week</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br />
+<br />
+<div class="virtual-try-on-container">
+  <div class="vto-box-1">
+  <img src="./assets/site/person.png">
+  </div>
+  <div class="vto-box-2">
+    <br/>
+    <br/>
+    <br/>
+    <h1>Virtual Try On</h1>
+    <br/>
+    <button mat-button class="camera-icon" (click)="toggleCamera()" style="width: 10%;"><img src="./assets/site/camera.png" style="width: 50%"></button>
+    <div *ngIf="toggle">
+      <div style="position: relative;">
+        <webcam [height]="480" [width]="640" ></webcam>
+        <img src="{{ item.imagePath }}" class="glasses" style="position: absolute; top: 30%; left: 40%; width: 30%; height: 30%">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!--<div class="related-items-container">-->
+<!--  &lt;!&ndash; ngFor loop to print a bunch of related items &ndash;&gt;-->
+<!--  <br />-->
+<!--  <h1>Related Items</h1>-->
+<!--  <related-item></related-item>-->
+
+<!--</div>-->

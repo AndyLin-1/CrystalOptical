@@ -1,0 +1,51 @@
+<!--<div >-->
+<!--  <mat-grid-list>Test </mat-grid-list>-->
+<!--</div>-->
+<div class="sidebar">
+  <form class="search" [formGroup]="form">
+    <label>Search:</label>
+    <input type="text" id="search" formControlName="search">
+    <label>Sort by:</label>
+    <select id="sortby" name="sortby" formControlName="sortby" required>
+      <option value="*" selected>Name</option>
+      <option value="brand">Brand</option>
+      <option value="priceAsc">Price(Ascending)</option>
+      <option value="priceDesc">Price(Descending)</option>
+      <option value="ratingAsc">Rating(Ascending)</option>
+      <option value="ratingDesc">Rating(Descending)</option>
+    </select>
+    <label>Filter by Brand:</label>
+    <select id="brand" name="brand" formControlName="brand" required>
+      <option value="*" selected>All Brands</option>
+      <option value="armani">Armani</option>
+      <option value="burberry">Burberry</option>
+      <option value="coach">coach</option>
+      <option value="rayban">RayBan</option>
+      <option value="oakley">Oakley</option>
+    </select>
+    <button (click)="onSubmit()"
+            class="place-order-btn"
+            id="submit"
+            type="submit">Go</button>
+  </form>
+<!--  <div class="checkboxes">-->
+<!--    <label><input type="checkbox" name="brand" value="brand1" (click)="uncheckAllExcept($event.target)">Brand 1</label><br>-->
+<!--    <label><input type="checkbox" name="brand" value="brand2" (click)="uncheckAllExcept($event.target)">Brand 2</label><br>-->
+<!--    <label><input type="checkbox" name="brand" value="brand3" (click)="uncheckAllExcept($event.target)">Brand 3</label><br>-->
+<!--  </div>-->
+</div>
+<div class="content">
+  <div *ngFor="let item of items">
+    <div class="item" [routerLinkActive]="['active']" [routerLink]="['/item/' + item.id]">
+      <mat-grid-list cols="3">
+        <img src="{{item.imagePath}}" alt="Armani" style="width:100%; height: 100%;">
+        <p>{{item.frameSize}} {{item.colour}} {{item.brand}} {{item.name}}</p>
+        <p>${{item.price}}</p>
+        <p>Rating: {{item.rating.toFixed(2)}}</p>
+      </mat-grid-list>
+    </div>
+  </div>
+</div>
+
+
+

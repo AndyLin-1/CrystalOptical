@@ -2,6 +2,7 @@ package com.example.crystaloptical.api.service;
 
 import com.example.crystaloptical.api.dto.request.UserAuthRequest;
 import com.example.crystaloptical.api.dto.request.UserRegisterRequest;
+import com.example.crystaloptical.api.dto.response.MessageResponse;
 import com.example.crystaloptical.api.dto.response.UserLoginResponse;
 import com.example.crystaloptical.model.ConfirmationToken;
 import com.example.crystaloptical.model.UserRole;
@@ -36,7 +37,7 @@ public class AuthService {
         this.jwtTokenService = jwtTokenService;
     }
 
-    public ResponseEntity<String> registerUser(@Valid UserRegisterRequest userRegisterRequest) throws Exception {
+    public ResponseEntity<MessageResponse> registerUser(@Valid UserRegisterRequest userRegisterRequest) throws Exception {
         String email = userRegisterRequest.getEmail();
         String password = userRegisterRequest.getPassword();
         String firstName = userRegisterRequest.getFirstName();
@@ -52,7 +53,7 @@ public class AuthService {
         user.setLastName(lastName);
         user.setPassword(bCryptPasswordEncoder.encode(password)); // encrypt password using BCrypt
         user.setEnabled(true);
-        user.setRole(UserRole.ADMIN);
+        user.setRole(UserRole.USER);
 
         //Save User into Database
         userRepository.save(user);
@@ -62,7 +63,8 @@ public class AuthService {
         //JWT
 
 //        UserAuthRequest login = UserAuthRequest.builder().email(user.getEmail()).password(user.getPassword()).build();
-        return ResponseEntity.ok().body("Success");
+        MessageResponse message = MessageResponse.builder().message("Success").build();
+        return ResponseEntity.ok().body(message);
     }
 
     public ResponseEntity<UserLoginResponse> loginUser(@Valid UserAuthRequest userAuthRequest) throws Exception {
@@ -97,5 +99,35 @@ public class AuthService {
             sb.append(random.nextInt(10));
         }
         return sb.toString();
+    }
+
+    public ResponseEntity<MessageResponse> registerAdmin(@Valid UserRegisterRequest userRegisterRequest) throws Exception {
+        String email = userRegisterRequest.getEmail();
+        String password = userRegisterRequest.getPassword();
+        String firstName = userRegisterRequest.getFirstName();
+        String lastName = userRegisterRequest.getLastName();
+
+        if (userService.userWithEmailExists(email)) {
+            throw new Exception("Email already taken");
+        }
+
+        Users user = new Users();
+        user.setEmail(email);
+        user.setFirstName(firstName);
+        user.setLastName(lastName);
+        user.setPassword(bCryptPasswordEncoder.encode(password)); // encrypt password using BCrypt
+        user.setEnabled(true);
+        user.setRole(UserRole.ADMIN);
+
+        //Save User into Database
+        userRepository.save(user);
+
+        //Confirmation Token need to send Email
+
+        //JWT
+
+//        UserAuthRequest login = UserAuthRequest.builder().email(user.getEmail()).password(user.getPassword()).build();
+        MessageResponse message = MessageResponse.builder().message("Success").build();
+        return ResponseEntity.ok().body(message);
     }
 }

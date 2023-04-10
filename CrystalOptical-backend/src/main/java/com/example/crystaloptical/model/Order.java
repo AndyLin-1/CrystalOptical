@@ -27,7 +27,7 @@ public class Order {
     }
 
     // Shipping address will be stored in users' information
-    @OneToOne
+    @ManyToOne
     @JoinTable(
             name = "order_list",
             joinColumns = @JoinColumn(name = "order_id", referencedColumnName = "id"),
@@ -45,6 +45,8 @@ public class Order {
 
     @CreationTimestamp
     private Date createdAt;
+
+    private String address;
 
     public Order () {}
     public Order (Users users, ArrayList<ItemQuantity> items, deliveryStatus status) {

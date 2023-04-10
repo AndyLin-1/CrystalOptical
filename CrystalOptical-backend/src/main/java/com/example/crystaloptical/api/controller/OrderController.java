@@ -3,6 +3,7 @@ package com.example.crystaloptical.api.controller;
 import com.example.crystaloptical.api.dto.request.OrderRequest;
 import com.example.crystaloptical.api.dto.response.OrderInfoResponse;
 import com.example.crystaloptical.api.service.OrderService;
+import com.example.crystaloptical.model.Order;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,7 +22,7 @@ public class OrderController {
 
 
     @PostMapping("/order")
-    public ResponseEntity<OrderInfoResponse> sendOrder(@Valid @RequestBody OrderRequest orderRequest){
+    public ResponseEntity<OrderInfoResponse> sendOrder(@Valid @RequestBody OrderRequest orderRequest) throws Exception {
         return orderService.sendOrder(orderRequest);
     }
 
@@ -29,5 +30,6 @@ public class OrderController {
     public ResponseEntity<OrderInfoResponse> getOrder(@PathVariable Long id) throws Exception {
         return orderService.getOrderInfo(id);
     }
+
 
 }

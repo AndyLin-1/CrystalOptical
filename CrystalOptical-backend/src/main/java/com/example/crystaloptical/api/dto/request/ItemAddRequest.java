@@ -27,5 +27,5 @@ public class ItemAddRequest {
 
     private int itemStock;
 
-//    private String imagePath;
+    private String imagePath;
 }

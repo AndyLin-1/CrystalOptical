@@ -1,9 +1,9 @@
 package com.example.crystaloptical.api.service;
 
 import com.example.crystaloptical.api.dto.request.ItemAddRequest;
+import com.example.crystaloptical.api.dto.response.MessageResponse;
 import com.example.crystaloptical.model.Item;
 import com.example.crystaloptical.model.repo.ItemRepository;
-import org.apache.coyote.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +18,7 @@ public class ItemService {
         this.itemRepository = itemRepository;
     }
 
-    public ResponseEntity<String> addItem(ItemAddRequest itemAddRequest){
+    public ResponseEntity<MessageResponse> addItem(ItemAddRequest itemAddRequest){
         Item item = new Item();
         item.setName(itemAddRequest.getName());
         item.setPrice(itemAddRequest.getPrice());
@@ -26,18 +26,37 @@ public class ItemService {
         item.setFrameSize(itemAddRequest.getFrameSize());
         item.setColour(itemAddRequest.getColour());
         item.setItemStock(itemAddRequest.getItemStock());
+        item.setImagePath(itemAddRequest.getImagePath());
         itemRepository.save(item);
-        return ResponseEntity.ok().body("Success");
+        return ResponseEntity.ok().body(MessageResponse.builder().message("YES").build());
     }
 
 
+    public ResponseEntity<Item> getItem(Long id) throws Exception {
+        if(itemRepository.findById(id).isEmpty()){
+            throw new Exception("Item Does Not Exist");
+        }
+        return ResponseEntity.ok().body(itemRepository.findById(id).get());
+    }
 
     public ResponseEntity<Integer> getStock(Long id) throws Exception {
-        if(!itemRepository.findById(id).isPresent()){
+        if(itemRepository.findById(id).isEmpty()){
             throw new Exception("Item Does Not Exist");
         }
         Integer stock = itemRepository.findById(id).get().getItemStock();
         return ResponseEntity.ok(stock);
+    }
+
+    public void editStock(Long id, int number) throws Exception {
+         Item item =  itemRepository.findById(id).get();
+        if(itemRepository.findById(id).isEmpty()){
+            throw new Exception("Item Does Not Exist");
+        }
+        if(item.getItemStock() - number < 0) {
+            throw new Exception("Cannot Make Purchase");
+        }
+        item.setItemStock(item.getItemStock() - number);
+        itemRepository.save(item);
     }
 
     public ResponseEntity<List<Item>> getAllItems() {
@@ -45,8 +64,13 @@ public class ItemService {
         return ResponseEntity.ok(list);
     }
 
+    public ResponseEntity<List<Item>> getAllItemsByFilter(String brand, String name) {
+        return this.getAllItemsByFilterSorted(brand, name, "");
+    }
+
+
     public ResponseEntity<Double> rateItem(Long id, int rating) throws Exception {
-        if(!itemRepository.findById(id).isPresent()){
+        if(itemRepository.findById(id).isEmpty()){
             throw new Exception("Item Does Not Exist");
         }
         Item item = itemRepository.findById(id).get();
@@ -55,6 +79,25 @@ public class ItemService {
         item.calculateRating();
         itemRepository.save(item);
         return ResponseEntity.ok(item.getRating());
+    }
 
+    public ResponseEntity<List<Item>> getAllItemsByFilterSorted(String brand, String name, String sortby) {
+        List<Item> list;
+        name += "%";
+        brand += "%";
+        if(sortby.equalsIgnoreCase("brand")) {
+            list = itemRepository.findAllByBrandLikeIgnoreCaseAndNameLikeIgnoreCaseOrderByBrand(brand, name).stream().toList();
+        } else if(sortby.equalsIgnoreCase("priceDesc")) {
+            list = itemRepository.findAllByBrandLikeIgnoreCaseAndNameLikeIgnoreCaseOrderByPriceDesc(brand, name).stream().toList();
+        } else if(sortby.equalsIgnoreCase("priceAsc")) {
+            list = itemRepository.findAllByBrandLikeIgnoreCaseAndNameLikeIgnoreCaseOrderByPriceAsc(brand, name).stream().toList();
+        }else if(sortby.equalsIgnoreCase("ratingDesc")) {
+            list = itemRepository.findAllByBrandLikeIgnoreCaseAndNameLikeIgnoreCaseOrderByRatingDesc(brand, name).stream().toList();
+        } else if(sortby.equalsIgnoreCase("ratingAsc")) {
+            list = itemRepository.findAllByBrandLikeIgnoreCaseAndNameLikeIgnoreCaseOrderByRatingAsc(brand, name).stream().toList();
+        } else {
+            list = itemRepository.findAllByBrandLikeIgnoreCaseAndNameLikeIgnoreCaseOrderByName(brand, name).stream().toList();
+        }
+        return ResponseEntity.ok(list);
     }
 }

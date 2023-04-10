@@ -1,0 +1,121 @@
+.header-container {
+  border: lightgrey solid 2px;
+  border-radius: 7px;
+  display: flex;
+  margin: 10% 10% 2%;
+
+}
+.header {
+  flex-grow: 1; /* default 0 */
+}
+
+h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.button-container {
+  display: flex;
+/*  border: black solid 2px; */
+  padding-right: 10%;
+  padding-left: 10%;
+
+}
+
+.button-container div {
+  flex-grow: 1;
+/*  border: black solid 2px; */
+}
+
+.align-left {
+  text-align: left;
+}
+
+.left-button, .right-button {
+  border: black solid 1px;
+  width: 75%;
+  height: 150%;
+}
+
+.align-right {
+  text-align: right;
+
+}
+
+.total-container {
+  display: flex;
+
+  border-radius: 7px;
+  justify-content: center;
+
+}
+
+.inside-total-container {
+  flex-grow: 1;
+}
+
+.hr-styling {
+}
+.reduce-p-margin {
+  margin: 0;
+}
+
+.checkout-button-div {
+  justify-content: center;
+  color: white;
+}
+
+.checkout-button {
+  color: white;
+  background-color: #d74148;
+}
+
+.container-box {
+  padding-right: 30%;
+  padding-left: 30%;
+}
+
+.inner-box {
+}
+
+
+
+.item-container {
+  border: lightgrey solid 2px;
+  border-radius: 7px;
+  display: flex;
+  margin: 0% 10% 5%;
+}
+
+.item-container div {
+
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.thumbnail-title {
+  display: flex;
+}
+
+img {
+  width: 50px;
+  height: auto;
+}
+
+::ng-deep .mat-form-field-underline {
+  display: none;
+}
+
+input {
+  border: lightgrey solid 1px;
+  border-radius: 3px;
+}
+
+.error-no-items {
+  text-align: center;
+}
+
