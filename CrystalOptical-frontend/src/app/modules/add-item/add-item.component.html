@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="shipping-section">
+    <form [formGroup]="form">
+      <div class="form-group">
+        <label>Name:</label>
+        <input class="shipping" type="text" id="text" name="name" formControlName="name" required>
+      </div>
+      <div class="form-group">
+        <label>Price:</label>
+        <input class="shipping" type="number" id="price" name="price" formControlName="price" required>
+      </div>
+      <div class="form-group">
+        <label>Brand:</label>
+        <input class="shipping" type="text" id="text" name="name" formControlName="brand" required>
+      </div>
+      <div class="form-group">
+        <label>FrameSize:</label>
+        <input class="shipping" type="text" id="frameSize" name="frameSize" formControlName="frameSize" required>
+      </div>
+      <div class="form-group">
+        <label>Colour:</label>
+        <input class="shipping" type="text" id="colour" name="colour" formControlName="colour" required>
+      </div>
+      <div class="form-group">
+        <label>Stock:</label>
+        <input class="shipping" type="number" id="stock" name="stock" formControlName="itemStock" required>
+      </div>
+      <div class="form-group">
+        <label>imagePath:</label>
+        <input class="shipping" type="text" id="path" name="path" formControlName="imagePath" required>
+      </div>
+      <button
+        [disabled]="!form.valid"
+        (click)="onSubmit()"
+        class="place-order-btn"
+        id="submit"
+        type="submit"
+      >
+        Add Item
+      </button>
+    </form>
+  </div>
+</div>
