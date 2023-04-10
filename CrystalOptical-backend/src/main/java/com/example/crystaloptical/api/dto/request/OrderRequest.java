@@ -22,4 +22,8 @@ public class OrderRequest {
 
     private PaymentRequest paymentRequest;
 
+    private String address;
+
+
+
 }

@@ -2,6 +2,7 @@ package com.example.crystaloptical.api.service;
 
 import com.example.crystaloptical.api.dto.request.UserAuthRequest;
 import com.example.crystaloptical.api.dto.request.UserRegisterRequest;
+import com.example.crystaloptical.api.dto.response.MessageResponse;
 import com.example.crystaloptical.api.dto.response.UserLoginResponse;
 import com.example.crystaloptical.model.ConfirmationToken;
 import com.example.crystaloptical.model.UserRole;
@@ -36,7 +37,7 @@ public class AuthService {
         this.jwtTokenService = jwtTokenService;
     }
 
-    public ResponseEntity<String> registerUser(@Valid UserRegisterRequest userRegisterRequest) throws Exception {
+    public ResponseEntity<MessageResponse> registerUser(@Valid UserRegisterRequest userRegisterRequest) throws Exception {
         String email = userRegisterRequest.getEmail();
         String password = userRegisterRequest.getPassword();
         String firstName = userRegisterRequest.getFirstName();
@@ -62,7 +63,8 @@ public class AuthService {
         //JWT
 
 //        UserAuthRequest login = UserAuthRequest.builder().email(user.getEmail()).password(user.getPassword()).build();
-        return ResponseEntity.ok().body("Success");
+        MessageResponse message = MessageResponse.builder().message("Success").build();
+        return ResponseEntity.ok().body(message);
     }
 
     public ResponseEntity<UserLoginResponse> loginUser(@Valid UserAuthRequest userAuthRequest) throws Exception {

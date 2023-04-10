@@ -1,0 +1,35 @@
+/* styles.css */
+.wrapper {
+  min-height: 100%;
+  /* Add other styles for the content area as needed */
+}
+
+.footer{
+  margin-top: 200px;
+}
+
+.header{
+  margin-bottom: 100px;
+}
+
+/* Adjust styles for smaller screens */
+@media only screen and (max-width: 768px) {
+  .footer {
+    margin-top: 100px;
+  }
+
+  .header {
+    margin-bottom: 50px;
+  }
+}
+
+/* Adjust styles for even smaller screens */
+@media only screen and (max-width: 480px) {
+  .footer {
+    margin-top: 50px;
+  }
+
+  .header {
+    margin-bottom: 25px;
+  }
+}

@@ -32,6 +32,7 @@ export class CheckoutPageComponent implements OnInit {
       (this.items)[i].quantity = parseFloat((<HTMLInputElement>document.getElementById(i.toString())).value);
       this.subtotal += ((this.items)[i].item.price * (this.items)[i].quantity);
     }
+    this.updateCart();
   }
 
   updateCart(){

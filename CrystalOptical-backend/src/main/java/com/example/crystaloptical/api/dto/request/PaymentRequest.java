@@ -14,13 +14,11 @@ public class PaymentRequest {
     @NotEmpty
     private String name;
 
-    private int cardNumber;
+    private Long cardNumber;
 
     private int expiryMonth;
     private int expiryYear;
 
     private int securityCode;
-    
-    @NotEmpty
-    private String postal;
+
 }
