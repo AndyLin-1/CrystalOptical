@@ -74,7 +74,6 @@ export class ApiService {
     });
     return this.http.post(`${apiUrl}/admin/addItem`, request, {headers : header});
   }
-
   getItemStock(): Observable<any>{
     return this.http.get("http://localhost:8383/api/v1/item/list");
   }
