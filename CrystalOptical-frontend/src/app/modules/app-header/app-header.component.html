@@ -4,10 +4,7 @@
     <li class="nav-toggle">
       <i class="fas fa-bars"></i>
     </li>
-    <li class="nav-links"><a href="#">Catalogue</a></li>
-<!--    <li class="nav-links"><a href="#">Favorite</a></li>-->
-<!--    <li class="nav-links"><a href="#">Support</a></li>-->
-    <!--<li class="nav-links"><img class="nav-icon" src="./assets/site/profile.png" alt="profile icon"></li>-->
+    <li class="nav-links" [routerLinkActive]="['active']" [routerLink]="['/browse']"><a>Catalogue</a></li>
     <li class="test"><img class="nav-icon" src="./assets/site/cart.png" alt="cart icon" [routerLinkActive]="['active']" [routerLink]="['/checkout']"></li>
     <li class="cart-quantity-count">{{this.update()}}</li>
     <p>{{this.getName()}}</p>

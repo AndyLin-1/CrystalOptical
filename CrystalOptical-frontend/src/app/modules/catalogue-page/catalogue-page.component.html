@@ -1,0 +1,33 @@
+<!--<div >-->
+<!--  <mat-grid-list>Test </mat-grid-list>-->
+<!--</div>-->
+<div class="sidebar">
+  <form class="search">
+    <label>Search:</label>
+    <input type="text" id="search" name="search">
+    <label>Sort by:</label>
+    <input type="select" id="sort" name="sort">
+    <label>Filter by Brand:</label>
+    <button type="submit">Go</button>
+  </form>
+<!--  <div class="checkboxes">-->
+<!--    <label><input type="checkbox" name="brand" value="brand1" (click)="uncheckAllExcept($event.target)">Brand 1</label><br>-->
+<!--    <label><input type="checkbox" name="brand" value="brand2" (click)="uncheckAllExcept($event.target)">Brand 2</label><br>-->
+<!--    <label><input type="checkbox" name="brand" value="brand3" (click)="uncheckAllExcept($event.target)">Brand 3</label><br>-->
+<!--  </div>-->
+</div>
+<div class="content">
+  <div *ngFor="let item of items">
+    <div class="item" [routerLinkActive]="['active']" [routerLink]="['/item/' + item.id]">
+      <mat-grid-list cols="1">
+        <img src="./assets/site/Armani.png" alt="Armani" style="width:100%">
+        <p>{{item.frameSize}} {{item.colour}} {{item.brand}} {{item.name}}</p>
+        <p>${{item.price}}</p>
+        <p>Rating: {{item.rating}}</p>
+      </mat-grid-list>
+    </div>
+  </div>
+</div>
+
+
+

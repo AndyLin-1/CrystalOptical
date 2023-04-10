@@ -5,6 +5,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ApiService} from "../../services/api.service";
 import {StorageService} from "../../services/storage.service";
 import {Router} from "@angular/router";
+import {errorInterface, errorMessageInterface} from "../../models/message.interface";
 
 @Component({
   selector: 'app-log-in',
@@ -34,11 +35,11 @@ export class LogInComponent implements OnInit {
       password: this.form.value.password,
     };
     this.apiService.login(request).subscribe({next : (data: UserSessionInterface) => {
-        this.storageService.login(data.name, data.jwtToken);
+        this.storageService.login(data.name, data.jwtToken, data.id);
         this.router.navigateByUrl("/");
       },
-      error: (error) => {
-        this.message = "Wrong Password/Unregistered"
+      error: (error: errorInterface) => {
+        this.message = error.error.message;
       },
     },);
   }

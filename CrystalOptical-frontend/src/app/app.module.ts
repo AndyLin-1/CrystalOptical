@@ -6,7 +6,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
-import { SimpleItemComponent } from './modules/simple-item/simple-item.component';
 import {AppHeaderComponent} from "./modules/app-header/app-header.component";
 import {ItemDataComponent} from "./modules/item-data/item-data.component";
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -20,25 +19,17 @@ import {CreateAccountComponent} from "./modules/create-account/create-account.co
 import {PaymentComponent} from "./modules/payment/payment.component";
 import {ChatbotComponent} from "./modules/chatbot/chatbot.component";
 import { OrderInfoComponent } from './modules/order-info/order-info.component';
-
-import {ProductComponent} from "./Product/product.component";
-import {ItemComponent} from "./Item/item.component";
-
-import { SearchbarComponent} from "./searchbar/searchbar.component";
-import {Cataloguepage} from "./catalogue-page/catalogue-page.component";
+import {CataloguePageComponent} from "./modules/catalogue-page/catalogue-page.component";
 import {MatCardModule} from '@angular/material/card';
 import {MatChipsModule} from '@angular/material/chips';
-import {MatFormField} from "@angular/material/form-field";
-import {MatInputModule} from "@angular/material/input";
 import {MatSelectModule} from "@angular/material/select";
-import {FrontPageComponent} from "./front-page/front-page.component";
+import {FrontPageComponent} from "./modules/front-page/front-page.component";
 import {MatIconModule} from "@angular/material/icon";
-import {MatGridList, MatGridListModule} from "@angular/material/grid-list";
-import {RatingComponent} from './rating-component/rating-component';
+import {MatGridListModule} from "@angular/material/grid-list";
+import {RatingComponent} from "./modules/rating-component/rating-component";
 
 @NgModule({
   declarations: [AppComponent,
-    SimpleItemComponent,
     AppHeaderComponent,
     ItemDataComponent,
     CheckoutPageComponent,
@@ -47,7 +38,12 @@ import {RatingComponent} from './rating-component/rating-component';
     CreateAccountComponent,
     PaymentComponent,
     ChatbotComponent,
-    OrderInfoComponent],
+    OrderInfoComponent,
+    FrontPageComponent,
+    ItemDataComponent,
+    RatingComponent,
+    ItemDataComponent,
+    CataloguePageComponent],
     imports: [
         BrowserModule,
         AppRoutingModule,
@@ -57,7 +53,12 @@ import {RatingComponent} from './rating-component/rating-component';
         NoopAnimationsModule,
         MatButtonToggleModule,
         MatInputModule,
-        MatButtonModule
+        MatButtonModule,
+        MatCardModule,
+        MatChipsModule,
+        MatSelectModule,
+        MatIconModule,
+        MatGridListModule
     ],
   providers: [],
   bootstrap: [AppComponent]

@@ -21,10 +21,10 @@ header {
 .hero-image {
   /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-  url(https://i.etsystatic.com/11494740/r/il/d26673/3642526896/il_fullxfull.3642526896_g7gp.jpg);
+  url("https://i.etsystatic.com/11494740/r/il/d26673/3642526896/il_fullxfull.3642526896_g7gp.jpg");
 
   /* Set a specific height */
-  height: 50%;
+  height: 80vh;
 
   /* Position and center the image to scale nicely on all screens */
   background-position: center;

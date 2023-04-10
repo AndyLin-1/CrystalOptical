@@ -4,7 +4,10 @@ import {ApiService} from "../../services/api.service";
 import {StorageService} from "../../services/storage.service";
 import {Router} from "@angular/router";
 import {LoginRequestInterface} from "../../models/loginRequest.interface";
-import {orderInterface, paymentInterface} from "../../models/order";
+import {orderInfoInterface, orderInterface, paymentInterface} from "../../models/order";
+import {UserSessionInterface} from "../../models/userSession.interface";
+import {errorInterface} from "../../models/message.interface";
+import {itemsQuantityInterface} from "../../models/itemQuantity.interface";
 
 @Component({
   selector: 'app-payment',
@@ -16,6 +19,7 @@ export class PaymentComponent implements OnInit {
   form!: FormGroup;
   shippingform!: FormGroup;
   total: number = 0;
+  message: string = "";
 
   constructor(private fb: FormBuilder,
               private apiService: ApiService,
@@ -35,12 +39,10 @@ export class PaymentComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log("submitted");
     let shipping = this.shippingform.value.address +
-      " " + this.shippingform.value.country + " " +
-      this.shippingform.value.province + " " + this.shippingform.value.city + " " +
+      ", " + this.shippingform.value.city + ", " +
+      this.shippingform.value.province + ", " + this.shippingform.value.country + " " +
       this.shippingform.value.zip;
-    console.log(shipping);
     let paymentRequest1: paymentInterface = {
       name: this.form.value.name,
       cardNumber: this.form.value.creditCard,
@@ -55,7 +57,14 @@ export class PaymentComponent implements OnInit {
       paymentRequest: paymentRequest1,
       address: shipping
     }
-    this.apiService.sendOrder(orderRequest).subscribe();
+    this.apiService.sendOrder(orderRequest).subscribe({next : (data: orderInfoInterface) => {
+        this.storageService.updateCart([]);
+        this.router.navigateByUrl("/orderinfo/" + data.orderId);
+      },
+      error: (error: errorInterface) => {
+        this.message = error.error.message;
+      },
+    },);
   }
 
   test(){

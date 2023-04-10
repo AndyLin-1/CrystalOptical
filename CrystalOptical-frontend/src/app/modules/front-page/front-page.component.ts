@@ -1,5 +1,4 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
-import {ProductComponent} from "../Product/product.component";
 
 /**
  * @title Frontpage
