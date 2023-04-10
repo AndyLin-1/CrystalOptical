@@ -1,6 +1,7 @@
 package com.example.crystaloptical.api.service;
 
 import com.example.crystaloptical.api.dto.request.ItemAddRequest;
+import com.example.crystaloptical.api.dto.response.MessageResponse;
 import com.example.crystaloptical.model.Item;
 import com.example.crystaloptical.model.repo.ItemRepository;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +18,7 @@ public class ItemService {
         this.itemRepository = itemRepository;
     }
 
-    public ResponseEntity<String> addItem(ItemAddRequest itemAddRequest){
+    public ResponseEntity<MessageResponse> addItem(ItemAddRequest itemAddRequest){
         Item item = new Item();
         item.setName(itemAddRequest.getName());
         item.setPrice(itemAddRequest.getPrice());
@@ -25,8 +26,9 @@ public class ItemService {
         item.setFrameSize(itemAddRequest.getFrameSize());
         item.setColour(itemAddRequest.getColour());
         item.setItemStock(itemAddRequest.getItemStock());
+        item.setImagePath(itemAddRequest.getImagePath());
         itemRepository.save(item);
-        return ResponseEntity.ok().body("Success");
+        return ResponseEntity.ok().body(MessageResponse.builder().message("YES").build());
     }
 
 

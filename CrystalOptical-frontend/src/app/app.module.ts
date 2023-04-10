@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
@@ -26,6 +24,9 @@ import {MatSelectModule} from "@angular/material/select";
 import {FrontPageComponent} from "./modules/front-page/front-page.component";
 import {MatIconModule} from "@angular/material/icon";
 import {MatGridListModule} from "@angular/material/grid-list";
+import {WebcamModule} from "ngx-webcam";
+import { OrderComponent } from './modules/order/order.component';
+import { AddItemComponent } from './modules/add-item/add-item.component';
 
 @NgModule({
   declarations: [AppComponent,
@@ -40,7 +41,9 @@ import {MatGridListModule} from "@angular/material/grid-list";
     OrderInfoComponent,
     FrontPageComponent,
     ItemDataComponent,
-    CataloguePageComponent],
+    CataloguePageComponent,
+    OrderComponent,
+    AddItemComponent],
     imports: [
         BrowserModule,
         AppRoutingModule,
@@ -55,7 +58,8 @@ import {MatGridListModule} from "@angular/material/grid-list";
         MatChipsModule,
         MatSelectModule,
         MatIconModule,
-        MatGridListModule
+        MatGridListModule,
+        WebcamModule
     ],
   providers: [],
   bootstrap: [AppComponent]

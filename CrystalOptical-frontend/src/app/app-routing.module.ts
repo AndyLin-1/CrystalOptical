@@ -8,6 +8,8 @@ import {CreateAccountComponent} from "./modules/create-account/create-account.co
 import {OrderInfoComponent} from "./modules/order-info/order-info.component";
 import {FrontPageComponent} from "./modules/front-page/front-page.component";
 import {CataloguePageComponent} from "./modules/catalogue-page/catalogue-page.component";
+import {OrderComponent} from "./modules/order/order.component";
+import {AddItemComponent} from "./modules/add-item/add-item.component";
 
 const routes: Routes = [
   {path: "login", component: LogInComponent},
@@ -18,8 +20,10 @@ const routes: Routes = [
   {path: "itemsExample", component: ItemDataComponent},
   {path: "payment", component: PaymentComponent},
   {path: "orderinfo/:id", component: OrderInfoComponent},
+  {path: "orderinfo", component: OrderComponent},
   {path: "browse", component: CataloguePageComponent},
   {path: "home", component: FrontPageComponent},
+  {path: "additem", component: AddItemComponent},
   {path: "**", redirectTo: "home"}];
 
 @NgModule({

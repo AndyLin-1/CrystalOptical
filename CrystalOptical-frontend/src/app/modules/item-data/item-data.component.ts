@@ -4,6 +4,8 @@ import {ActivatedRoute} from "@angular/router";
 import {ApiService} from "../../services/api.service";
 import {StorageService} from "../../services/storage.service";
 import {itemsQuantityInterface} from "../../models/itemQuantity.interface";
+import { WebcamImage, WebcamInitError, WebcamUtil } from 'ngx-webcam';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'item-data',
@@ -14,6 +16,8 @@ import {itemsQuantityInterface} from "../../models/itemQuantity.interface";
 })
 
 export class ItemDataComponent implements OnInit {
+  //WebCam
+  toggle = false;
   description: string = "";
 
   item: itemsInterface;
@@ -81,6 +85,10 @@ export class ItemDataComponent implements OnInit {
     this.apiService.rateItem(this.item.id, this.rating).subscribe({next : (data) => {
         this.initializeItem(this.item.id);
       }});
+  }
+
+  toggleCamera() {
+    this.toggle=!this.toggle;
   }
 
 }

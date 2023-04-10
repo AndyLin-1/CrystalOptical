@@ -2,7 +2,7 @@
   <h1 *ngIf="orderId < 0 ">This Order does not exist</h1>
 </div>
 
-<div>
+<div *ngIf="items.length > 0">
   <h1>Your Order is On the Way!</h1>
   <h1>Your Order #: {{orderId}}</h1>
 </div>

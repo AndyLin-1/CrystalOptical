@@ -38,7 +38,7 @@
   <div *ngFor="let item of items">
     <div class="item" [routerLinkActive]="['active']" [routerLink]="['/item/' + item.id]">
       <mat-grid-list cols="3">
-        <img src="./assets/site/Armani.png" alt="Armani" style="width:100%">
+        <img src="{{item.imagePath}}" alt="Armani" style="width:100%; height: 100%;">
         <p>{{item.frameSize}} {{item.colour}} {{item.brand}} {{item.name}}</p>
         <p>${{item.price}}</p>
         <p>Rating: {{item.rating.toFixed(2)}}</p>

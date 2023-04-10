@@ -49,8 +49,8 @@ public class UserController {
 
     @GetMapping("/forAdmin")
     @PreAuthorize("hasAuthority('ADMIN')")
-    public String forAdmin(){
-        return "YES";
+    public ResponseEntity<MessageResponse> forAdmin(){
+        return ResponseEntity.ok().body(MessageResponse.builder().message("YES").build());
     }
 
     @GetMapping("/forUser")

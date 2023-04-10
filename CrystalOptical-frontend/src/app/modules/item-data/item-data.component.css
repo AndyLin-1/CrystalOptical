@@ -28,10 +28,10 @@ div {
   height: fit-content;
   align-self: center;
   flex-grow: 4;
-
-
-
+  /* Add object-fit property */
+  object-fit: cover;
 }
+
 
 .sizes {
   display: flex;
@@ -43,7 +43,7 @@ div {
 }
 
 .glasses {
-  max-width: 100%;
+  max-width: 200%;
   height: auto;
 }
 
