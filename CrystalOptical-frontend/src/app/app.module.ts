@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
@@ -20,6 +21,20 @@ import {PaymentComponent} from "./modules/payment/payment.component";
 import {ChatbotComponent} from "./modules/chatbot/chatbot.component";
 import { OrderInfoComponent } from './modules/order-info/order-info.component';
 
+import {ProductComponent} from "./Product/product.component";
+import {ItemComponent} from "./Item/item.component";
+
+import { SearchbarComponent} from "./searchbar/searchbar.component";
+import {Cataloguepage} from "./catalogue-page/catalogue-page.component";
+import {MatCardModule} from '@angular/material/card';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatFormField} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {MatSelectModule} from "@angular/material/select";
+import {FrontPageComponent} from "./front-page/front-page.component";
+import {MatIconModule} from "@angular/material/icon";
+import {MatGridList, MatGridListModule} from "@angular/material/grid-list";
+import {RatingComponent} from './rating-component/rating-component';
 
 @NgModule({
   declarations: [AppComponent,
