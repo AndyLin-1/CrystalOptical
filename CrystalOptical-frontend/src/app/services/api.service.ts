@@ -59,6 +59,14 @@ export class ApiService {
     return this.http.get(`${apiUrl}/item/list`);
   }
 
+  getAllItemsFilter(brand: string, name: string, sortby: string) : Observable<any> {
+    return this.http.get(`${apiUrl}/item/list/${brand}/${name}/${sortby}`);
+  }
+
+  rateItem(id: number, rating: number) : Observable<any>{
+    return this.http.get(`${apiUrl}/item/rate/${id}/${rating}`);
+  }
+
   getItemStock(): Observable<any>{
     return this.http.get("http://localhost:8383/api/v1/item/list");
   }

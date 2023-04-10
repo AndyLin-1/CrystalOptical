@@ -19,6 +19,9 @@ export class ItemDataComponent implements OnInit {
   item: itemsInterface;
 
   quantity_value: number = 1;
+  rating: number = 0;
+
+  public stars: boolean[] = Array(5).fill(false);
 
   constructor(private route: ActivatedRoute, private apiService: ApiService, private storageService: StorageService) { }
 
@@ -67,6 +70,17 @@ export class ItemDataComponent implements OnInit {
       cartItems.push(add);
     }
     this.storageService.updateCart(cartItems);
+  }
+
+  public rate(rating: number) {
+    this.rating = rating;
+    this.stars = this.stars.map((_, i) => rating > i);
+  }
+
+  submitRate() {
+    this.apiService.rateItem(this.item.id, this.rating).subscribe({next : (data) => {
+        this.initializeItem(this.item.id);
+      }});
   }
 
 }

@@ -8,6 +8,7 @@
       <h1>{{ item.brand + ' ' + item.name }}</h1>
       <h2>${{ item.price }}</h2>
       <p> {{ description }}</p>
+      <p>Rating: {{item.rating.toFixed(2)}}</p>
       <hr>
       <!--<img src="assets/singular-item/test_glasses.png" class="glasses">-->
     </div>
@@ -43,14 +44,22 @@
                       color: white;
                       ">+
         </button>
-        <button mat-button class="buy-now-button" (click)="buy()">Buy Now</button>
-        <button mat-button class="shopping-cart-icon"><img src="./assets/site/cart.png"></button>
+        <button mat-button class="buy-now-button" (click)="buy()">Add to Cart</button>
         <!--<increment-input></increment-input>-->
       </div>
 
-
+      <br/>
       <div>
-
+          <span
+            *ngFor="let star of stars; let i = index"
+            (click)="rate(i + 1)"
+          >
+            <ng-container *ngIf="star; else noStar">⭐</ng-container>
+            <ng-template #noStar>★</ng-template>
+          </span>
+        <button mat-button class="buy-now-button" (click)="submitRate()">Rate</button>
+      </div>
+      <div>
       </div>
       <div>
       </div>

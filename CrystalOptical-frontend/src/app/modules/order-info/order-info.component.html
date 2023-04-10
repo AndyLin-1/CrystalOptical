@@ -1,0 +1,31 @@
+<div>
+  <h1 *ngIf="orderId < 0 ">This Order does not exist</h1>
+</div>
+
+<div>
+  <h1>Your Order is On the Way!</h1>
+  <h1>Your Order #: {{orderId}}</h1>
+</div>
+<div class="header-container">
+  <div class="header"><h1>Product</h1></div>
+  <div class="header"><h1>Price</h1></div>
+  <div class="header"><h1>Quantity</h1></div>
+  <div class="header"><h1>Subtotal</h1></div>
+</div>
+<div *ngIf="items.length > 0">
+  <div class="item-container" *ngFor="let item of items; let i = index">
+    <div class="thumbnail-title">
+      <img src="{{item.item.imagePath}}">
+      <p class="item-name">{{ item.item.name }}</p>
+    </div>
+    <div><p class="item-price">{{ item.item.price }}</p></div>
+    <div class="quantity">
+      {{item.quantity}}
+    </div>
+    <div><p class="item-subtotal">${{ (item.item.price * item.quantity).toFixed(2) }}</p></div>
+  </div>
+</div>
+
+<div>
+  <h1>Shipping to: {{order.address}}</h1>
+</div>

@@ -11,13 +11,13 @@ import java.util.Optional;
 public interface ItemRepository extends JpaRepository<Item, Long> {
     Optional<Item> findById(Long id);
 
-    List<Item> findAllByBrandLikeIgnoreCaseAndColourLikeIgnoreCaseAndRatingGreaterThanOrderByName(String brand, String colour, double rating);
-    List<Item> findAllByBrandLikeIgnoreCaseAndColourLikeIgnoreCaseAndRatingGreaterThanOrderByBrand(String brand, String colour, double rating);
-    List<Item> findAllByBrandLikeIgnoreCaseAndColourLikeIgnoreCaseAndRatingGreaterThanOrderByPriceDesc(String brand, String colour, double rating);
-    List<Item> findAllByBrandLikeIgnoreCaseAndColourLikeIgnoreCaseAndRatingGreaterThanOrderByPriceAsc(String brand, String colour, double rating);
+    List<Item> findAllByBrandLikeIgnoreCaseAndNameLikeIgnoreCaseOrderByName(String brand, String name);
+    List<Item> findAllByBrandLikeIgnoreCaseAndNameLikeIgnoreCaseOrderByBrand(String brand, String name);
+    List<Item> findAllByBrandLikeIgnoreCaseAndNameLikeIgnoreCaseOrderByPriceDesc(String brand, String name);
+    List<Item> findAllByBrandLikeIgnoreCaseAndNameLikeIgnoreCaseOrderByPriceAsc(String brand, String name);
 
-    List<Item> findAllByBrandLikeIgnoreCaseAndColourLikeIgnoreCaseAndRatingGreaterThanOrderByRatingDesc(String brand, String colour, double rating);
-    List<Item> findAllByBrandLikeIgnoreCaseAndColourLikeIgnoreCaseAndRatingGreaterThanOrderByRatingAsc(String brand, String colour, double rating);
+    List<Item> findAllByBrandLikeIgnoreCaseAndNameLikeIgnoreCaseOrderByRatingDesc(String brand, String name);
+    List<Item> findAllByBrandLikeIgnoreCaseAndNameLikeIgnoreCaseOrderByRatingAsc(String brand, String name);
 
 
 

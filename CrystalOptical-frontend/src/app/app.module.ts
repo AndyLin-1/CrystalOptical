@@ -26,7 +26,6 @@ import {MatSelectModule} from "@angular/material/select";
 import {FrontPageComponent} from "./modules/front-page/front-page.component";
 import {MatIconModule} from "@angular/material/icon";
 import {MatGridListModule} from "@angular/material/grid-list";
-import {RatingComponent} from "./modules/rating-component/rating-component";
 
 @NgModule({
   declarations: [AppComponent,
@@ -40,8 +39,6 @@ import {RatingComponent} from "./modules/rating-component/rating-component";
     ChatbotComponent,
     OrderInfoComponent,
     FrontPageComponent,
-    ItemDataComponent,
-    RatingComponent,
     ItemDataComponent,
     CataloguePageComponent],
     imports: [
