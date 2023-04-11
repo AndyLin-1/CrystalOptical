@@ -52,4 +52,8 @@ export class CheckoutPageComponent implements OnInit {
     return Number(total.toFixed(2));
   }
 
+  deleteItem(i: number) {
+    this.items.splice(i, 1);
+    this.updateCart();
+  }
 }

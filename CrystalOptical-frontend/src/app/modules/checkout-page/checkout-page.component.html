@@ -19,6 +19,7 @@
             <mat-form-field class="example-full-width" style="width: 3em">
               <input type="number" (change)="valueChanged()"  id="{{ i }}" style="width: 3em" matInput onKeyDown="return false" min=1 max=5 value= "{{ item.quantity }}">
             </mat-form-field>
+            <button (click)="deleteItem(i)" >delete</button>
           </form>
         </div>
     <div><p class="item-subtotal">${{ (item.item.price * item.quantity).toFixed(2) }}</p></div>
